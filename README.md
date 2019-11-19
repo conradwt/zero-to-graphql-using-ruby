@@ -297,7 +297,7 @@ The purpose of this example is to provide details as to how one would go about u
               null: false,
               description: 'email of a person'
 
-        field :friends, [Types::PersonType],
+        field :friends, [PersonType],
               null: false,
               description: 'a list of friends for our person'
 

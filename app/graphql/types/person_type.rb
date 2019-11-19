@@ -22,7 +22,7 @@ module Types
           null: false,
           description: 'email of a person'
 
-    field :friends, [Types::PersonType],
+    field :friends, [PersonType],
           null: false,
           description: 'a list of friends for our person'
 
