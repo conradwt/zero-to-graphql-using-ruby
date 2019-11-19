@@ -257,12 +257,12 @@ The purpose of this example is to provide details as to how one would go about u
 
 20. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
-    `app/graphql/schema.rb`:
+    `app/graphql/zero_rails_schema.rb`:
 
     ```ruby
     # frozen_string_literal: true
 
-    class Schema < GraphQL::Schema
+    class ZeroRailsSchema < GraphQL::Schema
       mutation(Types::MutationType)
       query(Types::QueryType)
     end
