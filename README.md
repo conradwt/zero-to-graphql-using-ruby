@@ -6,11 +6,11 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Ruby 2.6.3 or higher
+- Ruby 2.6.5 or higher
 
-- Rails 6.0.1 or higher
+- Rails 6.0.2 or higher
 
-- PostgreSQL 12.0.1 or higher
+- PostgreSQL 12.1.0 or higher
 
 ## Communication
 
