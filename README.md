@@ -6,11 +6,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Ruby 2.6.5 or higher
+- Node 12.2.0 or higher
 
-- Rails 6.0.2 or higher
+- PostgreSQL 12.2 or higher
 
-- PostgreSQL 12.1 or higher
+- Rails 6.0.3 or higher
+
+- Ruby 2.7.1 or higher
+
+- Yarn 1.22.4 or higher
 
 ## Communication
 
@@ -389,7 +393,7 @@ Ready to run in production? Please [check our deployment guides](https://guides.
 ## Rails References
 
 - Official website: https://rubyonrails.org
-- Guides: https://guides.rubyonrails.org/v5.2
+- Guides: https://guides.rubyonrails.org
 - Docs: https://api.rubyonrails.org
 - Mailing list: https://groups.google.com/forum/#!forum/rubyonrails-talk
 - Source: https://github.com/rails/rails
