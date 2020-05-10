@@ -167,7 +167,7 @@ The purpose of this example is to provide details as to how one would go about u
     ```
 
 12. replace `t.references :friend, foreign_key: true`, within migration file,
-    `<some-timestamp>_create_friendships_rb` file with the following:
+    `<some-timestamp>_create_friendships.rb` file with the following:
 
     ```ruby
     t.references :friend, index: true
