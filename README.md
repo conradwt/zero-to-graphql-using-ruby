@@ -67,7 +67,7 @@ The purpose of this example is to provide details as to how one would go about u
 7.  navigate to our application within the browser
 
     ```bash
-    open http://localhost:3000/graphiql
+    open http://localhost:3000/graphql
     ```
 
 8.  enter and run GraphQL query
@@ -339,8 +339,9 @@ The purpose of this example is to provide details as to how one would go about u
 
     ```ruby
     if Rails.env.development?
-      mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
+      mount GraphiQL::Rails::Engine, at: "/graphql", graphql_path: "/graphql"
     end
+
     post "/graphql", to: "graphql#execute"
     ```
 
@@ -362,7 +363,7 @@ The purpose of this example is to provide details as to how one would go about u
 26. navigate to our application within the browser
 
     ```bash
-    open http://localhost:3000/graphiql
+    open http://localhost:3000/graphql
     ```
 
 27. enter and run GraphQL query
