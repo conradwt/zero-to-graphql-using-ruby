@@ -9,6 +9,7 @@ updates:
     schedule:
       interval: daily
       time: '10:00'
+    security-updates-only: true
     versioning-strategy: lockfile-only
 
   - package-ecosystem: 'npm'
@@ -19,4 +20,5 @@ updates:
     schedule:
       interval: daily
       time: '10:00'
+    security-updates-only: true
     versioning-strategy: lockfile-only
