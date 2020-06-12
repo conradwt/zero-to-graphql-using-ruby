@@ -89,6 +89,14 @@ The purpose of this example is to provide details as to how one would go about u
     }
     ```
 
+9.  run the GraphQL query
+
+    ```text
+    Control + Enter
+    ```
+
+    Note: The GraphQL query is responding with same shape as our GraphQL document.
+
 ## Tutorial Installation
 
 1.  create the project
@@ -383,6 +391,12 @@ The purpose of this example is to provide details as to how one would go about u
         }
       }
     }
+    ```
+
+28. run the GraphQL query
+
+    ```text
+    Control + Enter
     ```
 
     Note: The GraphQL query is responding with same shape as our GraphQL document.
