@@ -32,7 +32,7 @@ end
 group :development do
   gem 'graphiql-rails',         '~> 1.7'
 
-  gem 'listen',                 '>= 3.0.5', '< 3.2'
+  gem 'listen',                 '>= 3.0.5', '< 3.3'
 
   gem 'spring',                 '~> 2.1'
   gem 'spring-watcher-listen',  '~> 2.0.0'
