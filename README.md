@@ -6,15 +6,17 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Node 12.2.0 or higher
+- Node 14.13.0 or newer
 
-- PostgreSQL 12.2 or higher
+- PostgreSQL 12.3.0 or newer
 
-- Rails 6.0.3.1 or higher
+- Rails 6.0.3.3 or newer
 
-- Ruby 2.7.1 or higher
+- Ruby 2.7.2 or newer
 
-- Yarn 1.22.4 or higher
+- Yarn 1.22.4 or newer
+
+Note: This tutorial was updated on macOS 10.15.6.
 
 ## Communication
 
