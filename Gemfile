@@ -9,7 +9,7 @@ gem 'rails',                    '~> 6.0.3.3'
 
 gem 'bootsnap',                 '~> 1.4', '>= 1.4.5', require: false
 
-gem 'graphql',                  '~> 1.11'
+gem 'graphql',                  '~> 1.11.5'
 
 gem 'jbuilder',                 '~> 2.7'
 
