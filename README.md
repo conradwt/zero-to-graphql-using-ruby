@@ -10,13 +10,13 @@ The purpose of this example is to provide details as to how one would go about u
 
 - PostgreSQL 12.3.0 or newer
 
-- Rails 6.0.3.3 or newer
+- Rails 6.0.3.4 or newer
 
 - Ruby 2.7.2 or newer
 
 - Yarn 1.22.4 or newer
 
-Note: This tutorial was updated on macOS 10.15.6.
+Note: This tutorial was updated on macOS 10.15.7.
 
 ## Communication
 
