@@ -8,7 +8,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Node 14.13.0 or newer
 
-- PostgreSQL 12.3.0 or newer
+- PostgreSQL 13.0.0 or newer
 
 - Rails 6.0.3.4 or newer
 
