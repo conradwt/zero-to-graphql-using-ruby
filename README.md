@@ -46,13 +46,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     bundle install
     ```
 
-4.  update the `host`, `username`, `password` settings which appear at the top of the following file(s):
-
-    ```text
-    config/database.yaml
-    ```
-
-5.  create, migrate, and seed the database
+4.  create, migrate, and seed the database
 
     ```bash
     rails db:create
@@ -60,19 +54,19 @@ Note: This tutorial was updated on macOS 10.15.7.
     rails db:seed
     ```
 
-6.  start the server
+5.  start the server
 
     ```bash
     rails s
     ```
 
-7.  navigate to our application within the browser
+6.  navigate to our application within the browser
 
     ```bash
     open http://localhost:3000/graphiql
     ```
 
-8.  enter and run GraphQL query
+7.  enter and run GraphQL query
 
     ```graphql
     {
@@ -91,7 +85,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     }
     ```
 
-9.  run the GraphQL query
+8.  run the GraphQL query
 
     ```text
     Control + Enter
