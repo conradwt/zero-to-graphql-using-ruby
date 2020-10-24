@@ -98,7 +98,7 @@ Note: This tutorial was updated on macOS 10.15.7.
 1.  create the project
 
     ```bash
-    rails new zero-rails -d postgresql -T
+    rails new zero-rails -d postgresql -T --skip-webpack-install --skip-javascript
     ```
 
 2.  rename the project directory
