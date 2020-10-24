@@ -263,13 +263,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     rails generate graphql:install
     ```
 
-19. replace `gem 'graphiql-rails', group: :development` within `Gemfile` to the following:
-
-    ```zsh
-    bundle add graphiql-rails --group 'development'
-    ```
-
-20. add the GraphQL schema which represents our entry point into our GraphQL structure:
+19. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
     `app/graphql/zero_rails_schema.rb`:
 
@@ -282,7 +276,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     end
     ```
 
-21. add our PersonType:
+20. add our PersonType:
 
     `app/graphql/types/person_type.rb`:
 
@@ -322,7 +316,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     end
     ```
 
-22. update our QueryType to look like the following:
+21. update our QueryType to look like the following:
 
     `app/graphql/types/person_type.rb`:
 
@@ -343,19 +337,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     end
     ```
 
-23. add routes for mounting the GraphiQL browser endpoint and submitting GraphQL document requests:
-
-    `config/routes.rb`:
-
-    ```ruby
-    if Rails.env.development?
-      mount GraphiQL::Rails::Engine, at: "/graphiql", graphql_path: "/graphql"
-    end
-
-    post "/graphql", to: "graphql#execute"
-    ```
-
-24. add the following two lines to the bottom of our manifest file:
+22. add the following two lines to the bottom of our manifest file:
 
     `app/assets/config/manifest.js`:
 
@@ -364,19 +346,19 @@ Note: This tutorial was updated on macOS 10.15.7.
     //= link graphiql/rails/application.js
     ```
 
-25. start the server
+23. start the server
 
     ```zsh
     rails s
     ```
 
-26. navigate to our application within the browser
+24. navigate to our application within the browser
 
     ```bash
     open http://localhost:3000/graphiql
     ```
 
-27. enter and run GraphQL query
+25. enter and run GraphQL query
 
     ```graphql
     {
@@ -395,7 +377,7 @@ Note: This tutorial was updated on macOS 10.15.7.
     }
     ```
 
-28. run the GraphQL query
+26. run the GraphQL query
 
     ```text
     Control + Enter
