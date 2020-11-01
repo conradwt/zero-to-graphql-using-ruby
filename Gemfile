@@ -20,8 +20,6 @@ gem 'rack-cors',                '~> 1.0'
 
 gem 'sass-rails',               '>= 6'
 
-gem 'turbolinks',               '~> 5'
-
 group :development, :test do
   gem 'byebug',                 '~> 11.0', '>= 11.0.1'
   # gem 'byebug',                 platforms: %i[mri mingw x64_mingw]
