@@ -1,6 +1,6 @@
 # https://docs.docker.com/compose/rails/
 
-version: '3.8'
+version: '2.4'
 
 services:
   web:
