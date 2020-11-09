@@ -91,12 +91,93 @@ Note: This tutorial was updated on macOS 10.15.7.
 
     Note: The GraphQL query is responding with same shape as our GraphQL document.
 
+## Docker Installation
+
+1.  clone this repository
+
+    ```bash
+    git clone git@github.com:conradwt/zero-to-graphql-using-rails.git
+    ```
+
+2.  change directory location
+
+    ```bash
+    cd zero-to-graphql-using-rails
+    ```
+
+3.  change the host name in `database.yml` on line `23`:
+
+    replace:
+
+    ```text
+    host: localhost
+    ```
+
+    with:
+
+    ```text
+    host: db
+    ```
+
+4.  start all services
+
+    ```zsh
+    docker-compose up -d
+    ```
+
+5.  create, migrate, and seed database
+
+    ```zsh
+    docker-compose exec web rails db:setup
+    ```
+
+6.  navigate to our application within the browser
+
+    ```bash
+    open http://localhost:3000/graphiql
+    ```
+
+7.  enter and run GraphQL query
+
+    ```graphql
+    {
+      person(id: "1") {
+        firstName
+        lastName
+        username
+        email
+        friends {
+          firstName
+          lastName
+          username
+          email
+        }
+      }
+    }
+    ```
+
+8.  run the GraphQL query
+
+    ```text
+    Control + Enter
+    ```
+
+    Note: The GraphQL query is responding with same shape as our GraphQL document.
+
+9.  cleanup
+
+    ```zsh
+    docker-compose down
+    docker volume prune
+    docker network prune
+    ```
+
 ## Tutorial Installation
 
 1.  create the project
 
     ```bash
-    rails new zero-rails -d postgresql -T --skip-webpack-install --skip-javascript
+    rails new zero-rails -d postgresql --skip-active-storage --skip-webpack-install --skip-javascript -T --no-rc
     ```
 
 2.  rename the project directory
@@ -407,3 +488,33 @@ Zero to GraphQL Using Rails is released under the [MIT license](./LICENSE.md).
 ## Copyright
 
 copyright:: (c) Copyright 2019 - 2020 Conrad Taylor. All Rights Reserved.
+
+Notes:
+
+## Docker
+
+1. start all services
+
+   ```zsh
+   docker-compose up
+   ```
+
+2. create, migrate, and seed database
+
+   ```zsh
+   docker exec web rails db:setup
+   ```
+
+   Note: The docker-compose `db` service should be used as the host within the `database.yml`.
+
+3. stop all services
+
+   ```zsh
+   docker-compose down
+   ```
+
+4. remove the volume
+
+   ```zsh
+   docker volume rm zero-to-graphql-using-rails_db-data
+   ```
