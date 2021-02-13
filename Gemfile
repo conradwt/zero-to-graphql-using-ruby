@@ -5,11 +5,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.0'
 
-gem 'rails',                    '~> 6.1.0'
+gem 'rails',                    '~> 6.1.1'
 
 gem 'bootsnap',                 '~> 1.4', '>= 1.4.5', require: false
 
-gem 'graphql',                  '~> 1.11.5'
+gem 'graphql',                  '~> 1.12.4'
 
 gem 'jbuilder',                 '~> 2.7'
 
@@ -21,8 +21,7 @@ gem 'rack-cors',                '~> 1.0'
 gem 'sass-rails',               '>= 6'
 
 group :development, :test do
-  gem 'byebug',                 '~> 11.0', '>= 11.0.1'
-  # gem 'byebug',                 platforms: %i[mri mingw x64_mingw]
+  gem 'byebug',                 '~> 11.1', '>= 11.1.3'
   gem 'rspec-rails',            '~> 4.0', '>= 4.0.1'
 end
 
