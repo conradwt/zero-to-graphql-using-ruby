@@ -1,9 +1,9 @@
 ## Base
 
-FROM ruby:2.7.2-slim as base
+FROM ruby:3.0.0-alpine3.13 as base
 
-RUN groupadd --gid 1000 nobody \
-  && useradd --uid 1000 --gid nobody --shell /bin/bash --create-home nobody
+# RUN addgroup --gid 1000 nobody \
+#   && adduser --uid 1000 --ingroup nobody --shell /bin/bash --home nobody
 
 # set this with shell variables at build-time.
 # If they aren't set, then not-set will be default.
@@ -20,6 +20,19 @@ LABEL org.opencontainers.image.source=https://github.com/conradwt/zero-to-graphq
 LABEL org.opencontainers.image.licenses=MIT
 LABEL com.conradtaylor.ruby_version=$RUBY_VERSION
 
+# install runtime dependencies
+RUN apk add --no-cache \
+  bzip2=1.0.8-r1 \
+  ca-certificates=20191127-r5 \
+  curl=7.74.0-r0 \
+  fontconfig=2.13.1-r3 \
+  tini=0.19.0-r0
+
+# install build dependencies
+RUN apk add --no-cache --virtual build-dependencies \
+  build-base=0.5-r2 \
+  postgresql-dev=13.1-r2
+
 ENV RAILS_ENV=production
 
 EXPOSE 3000
@@ -31,16 +44,12 @@ COPY Gemfile* ./
 
 RUN bundle config list
 RUN bundle config set without 'development test'
-# RUN bundle install --without development test --deployment
+RUN bundle install
 
-ENV PATH ./bin:$PATH
-ENV TINI_VERSION v0.18.0
+# uninstall our build dependencies
+RUN apk del build-dependencies
 
-ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini /tini
-
-RUN chmod +x /tini
-
-ENTRYPOINT ["/tini", "--"]
+ENTRYPOINT ["/sbin/tini", "--"]
 
 # Why should this go into `base` instead of `prod` stage?
 # CMD ["rails", "server", "-b", "0.0.0.0", "-e", "production"]
@@ -51,20 +60,13 @@ FROM base as dev
 
 ENV RAILS_ENV=development
 
-RUN apt-get update -qq && apt-get install -qq \
-  --no-install-recommends \
-  build-essential \
-  bzip2 \
-  ca-certificates \
-  curl \
-  libfontconfig \
-  libpq-dev \
-  && rm -rf /var/lib/apt/lists/*
-
 RUN bundle config list
 RUN bundle config --delete without
 RUN bundle config --delete with
 RUN bundle install
+
+# uninstall our build dependencies
+RUN apk del build-dependencies
 
 # Add a script to be executed every time the container starts.
 # COPY entrypoint.sh /usr/bin/
@@ -82,14 +84,6 @@ FROM dev as test
 COPY . .
 
 RUN rspec
-
-# ARG MICROSCANNER_TOKEN
-# ADD https://get.aquasec.com/microscanner /
-
-# USER root
-
-# RUN chmod +x /microscanner
-# RUN /microscanner $MICROSCANNER_TOKEN --continue-on-failure
 
 ## Pre-Production
 
