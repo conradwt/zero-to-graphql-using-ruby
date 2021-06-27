@@ -5,9 +5,10 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.0.1'
 
-gem 'rails',                    '~> 6.1', '>= 6.1.3.1'
+gem 'rails',                    '~> 6.1', '>= 6.1.4'
 
-gem 'bootsnap',                 '~> 1.4', '>= 1.4.5', require: false
+# Reduces boot times through caching; required in config/boot.rb
+gem 'bootsnap',                 '>= 1.4.4', require: false
 
 gem 'graphql',                  '~> 1.12.4'
 
@@ -22,6 +23,7 @@ gem 'sass-rails',               '>= 6'
 
 group :development, :test do
   gem 'byebug',                 '~> 11.1', '>= 11.1.3'
+  
   gem 'rspec-rails',            '~> 4.0', '>= 4.0.1'
 end
 

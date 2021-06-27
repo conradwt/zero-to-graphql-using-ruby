@@ -6,15 +6,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Node 14.16.0 or newer
+- Node 14.17.1 or newer
 
-- PostgreSQL 13.2 or newer
+- PostgreSQL 13.3 or newer
 
-- Rails 6.1.3.1 or newer
+- Rails 6.1.4 or newer
 
 - Ruby 3.0.1 or newer
 
-Note: This tutorial was updated on macOS 11.2.3.
+Note: This tutorial was updated on macOS 11.4.
 
 ## Communication
 
