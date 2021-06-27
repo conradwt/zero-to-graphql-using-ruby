@@ -1,14 +1,8 @@
+##
 ## Base
+##
 
-FROM ruby:3.0.0-alpine3.13 as base
-
-# RUN addgroup --gid 1000 nobody \
-#   && adduser --uid 1000 --ingroup nobody --shell /bin/bash --home nobody
-
-# set this with shell variables at build-time.
-# If they aren't set, then not-set will be default.
-ARG CREATED_DATE=not-set
-ARG SOURCE_COMMIT=not-set
+FROM ruby:3.0.1-alpine3.13 as base
 
 # labels from https://github.com/opencontainers/image-spec/blob/master/annotations.md
 LABEL org.opencontainers.image.authors=conradwt@gmail.com
@@ -20,53 +14,78 @@ LABEL org.opencontainers.image.source=https://github.com/conradwt/zero-to-graphq
 LABEL org.opencontainers.image.licenses=MIT
 LABEL com.conradtaylor.ruby_version=$RUBY_VERSION
 
-# install runtime dependencies
-RUN apk add --no-cache \
+# set this with shell variables at build-time.
+# If they aren't set, then not-set will be default.
+ARG CREATED_DATE=not-set
+ARG SOURCE_COMMIT=not-set
+
+# environment variables
+ENV APP_PATH /app
+ENV BUNDLE_PATH /usr/local/bundle/gems
+ENV TMP_PATH /tmp/
+ENV RAILS_LOG_TO_STDOUT true
+ENV RAILS_PORT 3000
+
+# create application user.
+RUN addgroup --gid 1000 darnoc \
+  && adduser --uid 1000 --ingroup darnoc --shell /bin/bash --home darnoc
+
+# copy entrypoint scripts and grant execution permissions
+# COPY ./dev-docker-entrypoint.sh /usr/local/bin/dev-entrypoint.sh
+# COPY ./test-docker-entrypoint.sh /usr/local/bin/test-entrypoint.sh
+# RUN chmod +x /usr/local/bin/dev-entrypoint.sh && chmod +x /usr/local/bin/test-entrypoint.sh
+
+#
+# https://pkgs.alpinelinux.org/packages?name=&branch=v3.13
+#
+
+# install build and runtime dependencies
+RUN apk -U add --no-cache \
+  build-base=0.5-r2 \
   bzip2=1.0.8-r1 \
   ca-certificates=20191127-r5 \
-  curl=7.74.0-r0 \
+  curl=7.74.0-r1 \
   fontconfig=2.13.1-r3 \
-  tini=0.19.0-r0
-
-# install build dependencies
-RUN apk add --no-cache --virtual build-dependencies \
-  build-base=0.5-r2 \
-  postgresql-dev=13.1-r2
+  postgresql-dev=13.2-r0 && \
+  tini=0.19.0-r0 \
+  tzdata=2021a-r0 && \
+  rm -rf /var/cache/apk/* && \
+  mkdir -p $APP_PATH
 
 ENV RAILS_ENV=production
 
-EXPOSE 3000
-ENV PORT 3000
+EXPOSE ${RAILS_PORT}
+ENV PORT ${RAILS_PORT}
 
-WORKDIR /app
+WORKDIR ${APP_PATH}
 
 COPY Gemfile* ./
 
-RUN bundle config list
+RUN gem install bundler && \
+  rm -rf ${GEM_HOME}/cache/*
 RUN bundle config set without 'development test'
-RUN bundle install
-
-# uninstall our build dependencies
-RUN apk del build-dependencies
+RUN bundle check || bundle install --jobs 20 --retry 5
 
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # Why should this go into `base` instead of `prod` stage?
 # CMD ["rails", "server", "-b", "0.0.0.0", "-e", "production"]
 
+##
 ## Development
+##
 
 FROM base as dev
 
 ENV RAILS_ENV=development
 
-RUN bundle config list
+# RUN bundle config list
 RUN bundle config --delete without
 RUN bundle config --delete with
-RUN bundle install
+RUN bundle check || bundle install --jobs 20 --retry 5
 
 # uninstall our build dependencies
-RUN apk del build-dependencies
+# RUN apk del build-dependencies
 
 # Add a script to be executed every time the container starts.
 # COPY entrypoint.sh /usr/bin/
@@ -77,15 +96,19 @@ USER nobody
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
 
+##
 ## Test
+##
 
 FROM dev as test
 
 COPY . .
 
-RUN rspec
+RUN bundle exec rspec
 
+##
 ## Pre-Production
+##
 
 FROM test as pre-prod
 
@@ -93,7 +116,9 @@ USER root
 
 RUN rm -rf ./spec
 
+##
 ## Production
+##
 
 FROM base as prod
 

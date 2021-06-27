@@ -1,48 +1,60 @@
 # https://docs.docker.com/compose/rails/
 
 services:
-  web:
+  app:
     build:
       context: .
+      dockerfile: Dockerfile
       target: dev
 
-    command: >
-      bash -c "
-        rm -f tmp/pids/server.pid &&
-        bundle exec rails db:setup &&
-        bundle exec rails s -p 3000 -b '0.0.0.0'
-      "
+    container_name: zero_rails
+
+    command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0']
 
     environment:
       - RAILS_ENV=development
 
     ports:
-      - '3000:3000'
+      - 3000:3000
+
+    stdin_open: true
+
+    tty: true
+
+    env_file: .env.development
+
+    entrypoint: dev-entrypoint.sh
 
     volumes:
       - .:/app
+      - shared_data:/var/shared
+      - gem_cache:/usr/local/bundle/gems
 
     depends_on:
       db:
         condition: service_healthy
 
   db:
-    image: postgres:13.2
+    image: postgres:13.2-alpine
 
     hostname: localhost
 
     volumes:
-      - db-data:/var/lib/postgresql/data
+      - db_data:/var/lib/postgresql/data
+      - shared_data:/var/shared
 
     environment:
       - POSTGRES_HOST_AUTH_METHOD=trust
+      - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
 
     ports:
-      - '5432:5432'
+      - 5432:5432
 
     healthcheck:
       test: pg_isready -U postgres -h 127.0.0.1
 
 volumes:
-  db-data: {}
+  db_data: {}
+  gem_cache: {}
+  shared_data: {}
