@@ -1,10 +1,12 @@
 # Zero to GraphQL Using Rails
 
-The purpose of this example is to provide details as to how one would go about using GraphQL with the Rails Web Framework. Thus, I have created two major sections which should be self explanatory: Quick Installation and Tutorial Installation.
+The purpose of this example is to provide details as to how one would go about using GraphQL with the Rails Web Framework. Thus, I have created three major sections which should be self explanatory: Quick Installation, Docker Installation, and Tutorial Installation.
 
 ## Getting Started
 
 ## Software requirements
+
+- Docker Desktop 3.5.1.7 or newer
 
 - Node 14.17.1 or newer
 
@@ -14,7 +16,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Ruby 3.0.1 or newer
 
-Note: This tutorial was updated on macOS 11.4.
+Note: This tutorial was updated on macOS 11.4. Docker Desktop is ony needed if you're following the `Docker Installation`.
 
 ## Communication
 
