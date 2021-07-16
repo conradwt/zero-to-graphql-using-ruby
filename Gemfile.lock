@@ -64,7 +64,6 @@ GEM
     bootsnap (1.7.5)
       msgpack (~> 1.0)
     builder (3.2.4)
-    byebug (11.1.3)
     concurrent-ruby (1.1.9)
     crass (1.0.6)
     diff-lcs (1.4.4)
@@ -75,7 +74,7 @@ GEM
     graphiql-rails (1.7.0)
       railties
       sprockets-rails
-    graphql (1.12.12)
+    graphql (1.12.13)
     i18n (1.8.10)
       concurrent-ruby (~> 1.0)
     jbuilder (2.11.2)
@@ -135,7 +134,7 @@ GEM
       method_source
       rake (>= 0.13)
       thor (~> 1.0)
-    rake (13.0.3)
+    rake (13.0.6)
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -193,7 +192,6 @@ PLATFORMS
 
 DEPENDENCIES
   bootsnap (>= 1.4.4)
-  byebug (~> 11.1, >= 11.1.3)
   graphiql-rails (~> 1.7)
   graphql (~> 1.12.4)
   jbuilder (~> 2.7)
@@ -210,7 +208,7 @@ DEPENDENCIES
   web-console (>= 4.1.0)
 
 RUBY VERSION
-   ruby 3.0.1p64
+   ruby 3.0.2p107
 
 BUNDLED WITH
-   2.2.15
+   2.2.22
