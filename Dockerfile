@@ -2,7 +2,7 @@
 ## Base
 ##
 
-FROM ruby:3.0.1-alpine3.13 as base
+FROM ruby:3.0.2-alpine3.14 as base
 
 # labels from https://github.com/opencontainers/image-spec/blob/master/annotations.md
 LABEL org.opencontainers.image.authors=conradwt@gmail.com
@@ -92,7 +92,7 @@ RUN bundle check || bundle install --jobs 20 --retry 5
 # RUN chmod +x /usr/bin/entrypoint.sh
 # ENTRYPOINT ["entrypoint.sh"]
 
-USER nobody
+USER darnoc
 
 CMD ["rails", "server", "-b", "0.0.0.0"]
 
@@ -126,6 +126,6 @@ COPY --from=pre-prod /app /app
 
 HEALTHCHECK CMD curl http://127.0.0.1/ || exit 1
 
-USER nobody
+USER darnoc
 
 CMD ["rails", "server", "-b", "0.0.0.0", "-e", "production"]
