@@ -44,9 +44,9 @@ RUN apk -U add --no-cache \
   build-base=0.5-r2 \
   bzip2=1.0.8-r1 \
   ca-certificates=20191127-r5 \
-  curl=7.74.0-r1 \
-  fontconfig=2.13.1-r3 \
-  postgresql-dev=13.2-r0 && \
+  curl=7.78.0-r0 \
+  fontconfig=2.13.1-r4 \
+  postgresql-dev=13.4-r0 \
   tini=0.19.0-r0 \
   tzdata=2021a-r0 && \
   rm -rf /var/cache/apk/* && \
