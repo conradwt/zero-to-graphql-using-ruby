@@ -8,7 +8,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Docker Desktop 3.5.1.7 or newer
 
-- Node 14.17.2 or newer
+- Node 14.17.6 or newer
 
 - PostgreSQL 13.3 or newer
 
