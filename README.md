@@ -280,9 +280,9 @@ Note: This tutorial was updated on macOS 11.5.2. Docker Desktop is ony needed if
                         email: 'conradwt@gmail.com',
                         username: 'conradwt')
     dhh = Person.create!(first_name: 'David',
-                        last_name: 'Heinemeier Hansson',
-                        email: 'dhh@37signals.com',
-                        username: 'dhh')
+                         last_name: 'Heinemeier Hansson',
+                         email: 'dhh@37signals.com',
+                         username: 'dhh')
     ezra = Person.create!(first_name: 'Ezra',
                           last_name: 'Zygmuntowicz',
                           email: 'ezra@merbivore.com',
