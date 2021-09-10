@@ -26,9 +26,22 @@ ENV TMP_PATH /tmp/
 ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_PORT 3000
 
-# create application user.
-RUN addgroup --gid 1000 darnoc && \
-    adduser --uid 1000 --ingroup darnoc --shell /bin/bash --home darnoc
+ENV USER=darnoc
+ENV UID=1000
+ENV GID=1000
+
+# creates an unprivileged user to be used exclusively to run the Rails app
+RUN \
+  addgroup \
+   -g "${GID}" \
+   -S "${USER}" \
+  && adduser \
+   -s /bin/sh \
+   -u "${UID}" \
+   -G "${USER}" \
+   -h "/home/${USER}" \
+   -D "${USER}" \
+  && su "${USER}"
 
 # copy entrypoint scripts and grant execution permissions
 # COPY ./dev-docker-entrypoint.sh /usr/local/bin/dev-entrypoint.sh
@@ -66,6 +79,10 @@ RUN gem install bundler && \
 RUN bundle config set without 'development test'
 RUN bundle check || bundle install --jobs 20 --retry 5
 
+COPY . .
+
+RUN chown -R ${USER}:${USER} ${APP_PATH}
+
 ENTRYPOINT ["/sbin/tini", "--"]
 
 # Why should this go into `base` instead of `prod` stage?
@@ -92,17 +109,15 @@ RUN bundle check || bundle install --jobs 20 --retry 5
 # RUN chmod +x /usr/bin/entrypoint.sh
 # ENTRYPOINT ["entrypoint.sh"]
 
-USER darnoc
+USER ${USER}:${USER}
 
-CMD ["rails", "server", "-b", "0.0.0.0"]
+CMD ["bin/rails", "server", "-b", "0.0.0.0"]
 
 ##
 ## Test
 ##
 
 FROM dev as test
-
-COPY . .
 
 RUN bundle exec rspec
 
@@ -126,6 +141,6 @@ COPY --from=pre-prod /app /app
 
 HEALTHCHECK CMD curl http://127.0.0.1/ || exit 1
 
-USER darnoc
+USER ${USER}:${USER}
 
-CMD ["rails", "server", "-b", "0.0.0.0", "-e", "production"]
+CMD ["bin/rails", "server", "-b", "0.0.0.0", "-e", "production"]
