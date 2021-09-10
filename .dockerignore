@@ -51,10 +51,4 @@ README.md
 
 **/.DS_Store
 
-.metals
-
-RAILS_6_ON_DOCKER.md
-
-traefik-v1.yml
-traefik-v2.yml
-traefik.yml
+**/.metals
