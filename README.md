@@ -462,6 +462,12 @@ Ready to run in production? Please [check our deployment guides](https://guides.
 - Official Website: http://graphql.org
 - GraphQL Ruby: https://graphql-ruby.org
 
+## Docker and Docker Compose References
+
+- Docker Docs - https://docs.docker.com/reference
+- Docker Compose - https://docs.docker.com/samples/rails
+- How to setup Rails 6 on Docker - https://www.youtube.com/watch?app=desktop&v=XIjGbfcMAYM
+
 ## Support
 
 Bug reports and feature requests can be filed with the rest for the Phoenix project here:
