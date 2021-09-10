@@ -27,8 +27,8 @@ ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_PORT 3000
 
 # create application user.
-RUN addgroup --gid 1000 darnoc \
-  && adduser --uid 1000 --ingroup darnoc --shell /bin/bash --home darnoc
+RUN addgroup --gid 1000 darnoc && \
+    adduser --uid 1000 --ingroup darnoc --shell /bin/bash --home darnoc
 
 # copy entrypoint scripts and grant execution permissions
 # COPY ./dev-docker-entrypoint.sh /usr/local/bin/dev-entrypoint.sh

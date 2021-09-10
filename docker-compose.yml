@@ -7,11 +7,12 @@ services:
       dockerfile: Dockerfile
       target: dev
 
-    container_name: zero_rails
-
     command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0']
 
     environment:
+      - POSTGRES_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
       - RAILS_ENV=development
 
     ports:
@@ -21,9 +22,10 @@ services:
 
     tty: true
 
-    env_file: .env.development
+    env_file:
+      - development.env
 
-    entrypoint: dev-entrypoint.sh
+    entrypoint: ./dev-docker-entrypoint.sh
 
     volumes:
       - .:/app
@@ -35,9 +37,7 @@ services:
         condition: service_healthy
 
   db:
-    image: postgres:13.2-alpine
-
-    hostname: localhost
+    image: postgres:13.4-alpine
 
     volumes:
       - db_data:/var/lib/postgresql/data
@@ -52,7 +52,10 @@ services:
       - 5432:5432
 
     healthcheck:
-      test: pg_isready -U postgres -h 127.0.0.1
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   db_data: {}
