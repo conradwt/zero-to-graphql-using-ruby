@@ -49,9 +49,7 @@ Note: This tutorial was updated on macOS 11.5.2. Docker Desktop is ony needed if
 4.  create, migrate, and seed the database
 
     ```bash
-    rails db:create
-    rails db:migrate
-    rails db:seed
+    rails db:setup
     ```
 
 5.  start the server
