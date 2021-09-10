@@ -107,39 +107,25 @@ Note: This tutorial was updated on macOS 11.5.2. Docker Desktop is ony needed if
     cd zero-to-graphql-using-rails
     ```
 
-3.  change the host name in `database.yml` on line `23`:
-
-    replace:
-
-    ```text
-    host: localhost
-    ```
-
-    with:
-
-    ```text
-    host: db
-    ```
-
-4.  start all services
+3.  start all services
 
     ```zsh
     docker-compose up -d
     ```
 
-5.  create, migrate, and seed database
+4.  create, migrate, and seed database
 
     ```zsh
-    docker-compose exec web rails db:setup
+    docker-compose exec app rails db:setup
     ```
 
-6.  navigate to our application within the browser
+5.  navigate to our application within the browser
 
     ```bash
     open http://localhost:3000/graphiql
     ```
 
-7.  enter and run GraphQL query
+6.  enter and run GraphQL query
 
     ```graphql
     {
@@ -158,7 +144,7 @@ Note: This tutorial was updated on macOS 11.5.2. Docker Desktop is ony needed if
     }
     ```
 
-8.  run the GraphQL query
+7.  run the GraphQL query
 
     ```text
     Control + Enter
@@ -166,12 +152,11 @@ Note: This tutorial was updated on macOS 11.5.2. Docker Desktop is ony needed if
 
     Note: The GraphQL query is responding with same shape as our GraphQL document.
 
-9.  cleanup
+8.  cleanup
 
     ```zsh
     docker-compose down
-    docker volume prune
-    docker network prune
+    docker system prune -a --volumes
     ```
 
 ## Tutorial Installation
@@ -490,33 +475,3 @@ Zero to GraphQL Using Rails is released under the [MIT license](./LICENSE.md).
 ## Copyright
 
 copyright:: (c) Copyright 2019 - 2020 Conrad Taylor. All Rights Reserved.
-
-Notes:
-
-## Docker
-
-1. start all services
-
-   ```zsh
-   docker-compose up
-   ```
-
-2. create, migrate, and seed database
-
-   ```zsh
-   docker exec web rails db:setup
-   ```
-
-   Note: The docker-compose `db` service should be used as the host within the `database.yml`.
-
-3. stop all services
-
-   ```zsh
-   docker-compose down
-   ```
-
-4. remove the volume
-
-   ```zsh
-   docker volume rm zero-to-graphql-using-rails_db-data
-   ```
