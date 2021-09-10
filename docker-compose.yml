@@ -9,6 +9,8 @@ services:
 
     command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0']
 
+    entrypoint: ./dev-docker-entrypoint.sh
+
     environment:
       - POSTGRES_HOST=db
       - POSTGRES_USER=postgres
@@ -21,11 +23,6 @@ services:
     stdin_open: true
 
     tty: true
-
-    env_file:
-      - development.env
-
-    entrypoint: ./dev-docker-entrypoint.sh
 
     volumes:
       - .:/app
