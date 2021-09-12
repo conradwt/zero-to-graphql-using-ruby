@@ -108,13 +108,13 @@ Note: This tutorial was updated on macOS 11.5.2. Docker Desktop is ony needed if
 3.  start all services
 
     ```zsh
-    docker-compose up -d
+    docker compose up -d
     ```
 
 4.  create, migrate, and seed database
 
     ```zsh
-    docker-compose exec app rails db:setup
+    docker compose exec app rails db:setup
     ```
 
 5.  navigate to our application within the browser
@@ -153,7 +153,7 @@ Note: This tutorial was updated on macOS 11.5.2. Docker Desktop is ony needed if
 8.  cleanup
 
     ```zsh
-    docker-compose down
+    docker compose down
     docker system prune -a --volumes
     ```
 
