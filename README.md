@@ -478,4 +478,4 @@ Zero to GraphQL Using Rails is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-copyright:: (c) Copyright 2019 - 2020 Conrad Taylor. All Rights Reserved.
+copyright:: (c) Copyright 2019 - 2021 Conrad Taylor. All Rights Reserved.
