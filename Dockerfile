@@ -81,9 +81,11 @@ RUN bundle check || bundle install --jobs 20 --retry 5
 
 COPY . .
 
+RUN chmod +x ./entrypoint.sh
+
 RUN chown -R ${USER}:${USER} ${APP_PATH}
 
-ENTRYPOINT ["/sbin/tini", "--"]
+ENTRYPOINT ["/sbin/tini", "--", "./entrypoint.sh"]
 
 # Why should this go into `base` instead of `prod` stage?
 # CMD ["rails", "server", "-b", "0.0.0.0", "-e", "production"]
