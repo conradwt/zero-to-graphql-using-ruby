@@ -10,7 +10,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Node 14.17.6 or newer
 
-- PostgreSQL 13.3 or newer
+- PostgreSQL 13.4 or newer
 
 - Rails 6.1.4.1 or newer
 
