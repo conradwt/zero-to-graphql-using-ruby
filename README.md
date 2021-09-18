@@ -16,7 +16,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Ruby 3.0.2 or newer
 
-Note: This tutorial was updated on macOS 11.5.2. Docker Desktop is ony needed if you're following the `Docker Installation`.
+Note: This tutorial was updated on macOS 11.6. Docker Desktop is ony needed if you're following the `Docker Installation`.
 
 ## Communication
 
