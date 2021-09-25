@@ -87,9 +87,6 @@ RUN chown -R ${USER}:${USER} ${APP_PATH}
 
 ENTRYPOINT ["/sbin/tini", "--", "./entrypoint.sh"]
 
-# Why should this go into `base` instead of `prod` stage?
-# CMD ["rails", "server", "-b", "0.0.0.0", "-e", "production"]
-
 ##
 ## Development
 ##
@@ -103,14 +100,6 @@ RUN bundle config --delete without
 RUN bundle config --delete with
 RUN bundle check || bundle install --jobs 20 --retry 5
 
-# uninstall our build dependencies
-# RUN apk del build-dependencies
-
-# Add a script to be executed every time the container starts.
-# COPY entrypoint.sh /usr/bin/
-# RUN chmod +x /usr/bin/entrypoint.sh
-# ENTRYPOINT ["entrypoint.sh"]
-
 USER ${USER}:${USER}
 
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
@@ -121,7 +110,9 @@ CMD ["bin/rails", "server", "-b", "0.0.0.0"]
 
 FROM dev as test
 
-RUN bundle exec rspec
+USER ${USER}:${USER}
+
+CMD ["bundle", "exec", "rspec"]
 
 ##
 ## Pre-Production
