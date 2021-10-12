@@ -15,7 +15,7 @@ gem 'graphql',                  '~> 1.12.4'
 gem 'jbuilder',                 '~> 2.7'
 
 gem 'pg',                       '~> 1.2', '>= 1.2.3'
-gem 'puma',                     '~> 4.3.5'
+gem 'puma',                     '~> 4.3.9'
 
 gem 'rack-cors',                '~> 1.0'
 
