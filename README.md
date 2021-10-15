@@ -8,9 +8,9 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Docker Desktop 4.0.1 or newer
 
-- Node 14.17.6 or newer
+- Node 14.18.1 or newer
 
-- PostgreSQL 13.4 or newer
+- PostgreSQL 14.0 or newer
 
 - Rails 6.1.4.1 or newer
 
