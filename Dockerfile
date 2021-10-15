@@ -20,7 +20,7 @@ ARG CREATED_DATE=not-set
 ARG SOURCE_COMMIT=not-set
 
 # environment variables
-ENV APP_PATH /app
+ENV APP_PATH /home/darnoc/app
 ENV BUNDLE_PATH /usr/local/bundle/gems
 ENV TMP_PATH /tmp/
 ENV RAILS_LOG_TO_STDOUT true
@@ -130,7 +130,7 @@ RUN rm -rf ./spec
 
 FROM base as prod
 
-COPY --from=pre-prod /app /app
+COPY --from=pre-prod ${APP_PATH} ${APP_PATH}
 
 HEALTHCHECK CMD curl http://127.0.0.1/ || exit 1
 
