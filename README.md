@@ -37,7 +37,7 @@ Note: This tutorial was updated on macOS 11.6. Docker Desktop is ony needed if y
 2.  change directory location
 
     ```bash
-    cd /path/to/zero-to-graphql-using-rails
+    cd zero-to-graphql-using-rails
     ```
 
 3.  install dependencies
