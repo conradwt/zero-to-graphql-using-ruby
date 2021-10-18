@@ -6,7 +6,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Docker Desktop 4.0.1 or newer
+- Docker Desktop 4.1.1 or newer
 
 - Node 14.18.1 or newer
 
