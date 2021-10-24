@@ -183,26 +183,26 @@ Note: This tutorial was updated on macOS 11.6. Docker Desktop is ony needed if y
     bundle add rack-cors
     ```
 
-5.  config CORS by adding the following text after `config.generators.system_tests = nil`
-    within the `config/application.rb`:
+5.  add CORS initializer by adding the following text within the `config/initializers/cors.rb` file:
 
     ```ruby
-    # Config CORS.
-    config.middleware.insert_before 0, Rack::Cors do
+    Rails.application.config.middleware.insert_before 0, Rack::Cors do
       allow do
         origins '*'
+
         resource '*',
-                 headers: :any,
-                 methods: %i[get post delete put patch options head]
+                headers: :any,
+                methods: %i[get post put patch delete options head]
       end
     end
     ```
 
-6.  update the `host`, `username`, or `password` settings as necessary which
-    appear at the top of the following file(s):
+6.  Add the following after the `pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>` setting within `database.yml`:
 
     ```text
-    config/database.yaml
+    host: <%= ENV.fetch("POSTGRES_HOST") { 'localhost' } %>
+    username: <%= ENV.fetch("POSTGRES_USER") { 'postgres' } %>
+    password: <%= ENV.fetch("POSTGRES_PASSWORD") { 'password' } %>
     ```
 
 7.  create the database
