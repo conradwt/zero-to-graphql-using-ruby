@@ -8,7 +8,7 @@ FROM ruby:3.0.2-alpine3.14 as base
 LABEL org.opencontainers.image.authors=conradwt@gmail.com
 LABEL org.opencontainers.image.created=$CREATED_DATE
 LABEL org.opencontainers.image.revision=$SOURCE_COMMIT
-LABEL org.opencontainers.image.title="Zero To GraphQL Using Rails"
+LABEL org.opencontainers.image.title="Zero To GraphQL Using Ruby"
 LABEL org.opencontainers.image.url=https://hub.docker.com/u/conradwt/zero-rails
 LABEL org.opencontainers.image.source=https://github.com/conradwt/zero-to-graphql-using-rails
 LABEL org.opencontainers.image.licenses=MIT
