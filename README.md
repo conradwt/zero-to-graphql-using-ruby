@@ -1,6 +1,6 @@
-# Zero to GraphQL Using Rails
+# Zero to GraphQL Using Ruby
 
-The purpose of this example is to provide details as to how one would go about using GraphQL with the Rails Web Framework. Thus, I have created three major sections which should be self explanatory: Quick Installation, Docker Installation, and Tutorial Installation.
+The purpose of this example is to provide details as to how one would go about using GraphQL with the Ruby Language. Thus, I have created three major sections which should be self explanatory: Quick Installation, Docker Installation, and Tutorial Installation.
 
 ## Getting Started
 
@@ -31,13 +31,13 @@ Note: This tutorial was updated on macOS 11.6. Docker Desktop is ony needed if y
 1.  clone this repository
 
     ```bash
-    git clone git@github.com:conradwt/zero-to-graphql-using-rails.git
+    git clone git@github.com:conradwt/zero-to-graphql-using-ruby.git
     ```
 
 2.  change directory location
 
     ```bash
-    cd zero-to-graphql-using-rails
+    cd zero-to-graphql-using-ruby
     ```
 
 3.  install dependencies
@@ -96,13 +96,13 @@ Note: This tutorial was updated on macOS 11.6. Docker Desktop is ony needed if y
 1.  clone this repository
 
     ```bash
-    git clone git@github.com:conradwt/zero-to-graphql-using-rails.git
+    git clone git@github.com:conradwt/zero-to-graphql-using-ruby.git
     ```
 
 2.  change directory location
 
     ```bash
-    cd zero-to-graphql-using-rails
+    cd zero-to-graphql-using-ruby
     ```
 
 3.  start all services
@@ -162,19 +162,19 @@ Note: This tutorial was updated on macOS 11.6. Docker Desktop is ony needed if y
 1.  create the project
 
     ```bash
-    rails new zero-rails -d postgresql --skip-active-storage --skip-webpack-install --skip-javascript -T --no-rc
+    rails new zero-ruby -d postgresql --skip-active-storage --skip-webpack-install --skip-javascript -T --no-rc
     ```
 
 2.  rename the project directory
 
     ```bash
-    mv zero-rails zero-to-graphql-using-rails
+    mv zero-ruby zero-to-graphql-using-ruby
     ```
 
 3.  switch to the project directory
 
     ```bash
-    cd zero-to-graphql-using-rails
+    cd zero-to-graphql-using-ruby
     ```
 
 4.  update Ruby gem dependencies
@@ -323,12 +323,12 @@ Note: This tutorial was updated on macOS 11.6. Docker Desktop is ony needed if y
 
 19. add the GraphQL schema which represents our entry point into our GraphQL structure:
 
-    `app/graphql/zero_rails_schema.rb`:
+    `app/graphql/zero_ruby_schema.rb`:
 
     ```ruby
     # frozen_string_literal: true
 
-    class ZeroRailsSchema < GraphQL::Schema
+    class ZeroRubySchema < GraphQL::Schema
       mutation(Types::MutationType)
       query(Types::QueryType)
     end
@@ -470,11 +470,11 @@ Ready to run in production? Please [check our deployment guides](https://guides.
 
 Bug reports and feature requests can be filed with the rest for the Phoenix project here:
 
-- [File Bug Reports and Features](https://github.com/conradwt/zero-to-graphql-using-rails/issues)
+- [File Bug Reports and Features](https://github.com/conradwt/zero-to-graphql-using-ruby/issues)
 
 ## License
 
-Zero to GraphQL Using Rails is released under the [MIT license](./LICENSE.md).
+Zero to GraphQL Using Ruby is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
