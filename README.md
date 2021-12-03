@@ -14,7 +14,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Rails 6.1.4.1 or newer
 
-- Ruby 3.1.0 or newer
+- Ruby 3.0.2 or newer
 
 Note: This tutorial was updated on macOS 11.6.1. Docker Desktop is ony needed if you're following the `Docker Installation`.
 
