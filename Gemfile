@@ -3,41 +3,35 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.1.0'
+ruby '3.0.2'
 
-gem 'rails',                    '~> 6.1', '>= 6.1.4.1'
+gem 'rails',                    git: 'https://github.com/rails/rails'
 
 # Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap',                 '>= 1.4.4', require: false
+gem 'bootsnap',                 '>= 1.9.3', require: false
 
-gem 'graphql',                  '~> 1.12.4'
-
-gem 'jbuilder',                 '~> 2.7'
+gem 'graphql',                  '~> 1.13.2'
 
 gem 'pg',                       '~> 1.2', '>= 1.2.3'
-gem 'puma',                     '~> 4.3.9'
+gem 'puma',                     '~> 5.0'
 
 gem 'rack-cors',                '~> 1.0'
 
-gem 'sass-rails',               '>= 6'
+gem 'sprockets-rails',          '~> 3.4', '>= 3.4.2'
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  # gem 'byebug',                 '~> 11.1', '>= 11.1.3'
+  gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
-  gem 'rspec-rails',            '~> 4.0', '>= 4.0.1'
+  gem 'rspec-rails',            '~> 5.0.2'
 end
 
 group :development do
   gem 'graphiql-rails',         '~> 1.7'
 
-  gem 'listen',                 '~> 3.3'
+  gem 'rack-mini-profiler',     '~> 2.3', '>= 2.3.3'
 
-  gem 'rack-mini-profiler',     '~> 2.3', '>= 2.3.1'
-
-  gem 'spring',                 '~> 2.1', '>= 2.1.1'
-
-  gem 'web-console',            '>= 4.1.0'
+  gem 'web-console',            '~> 4.2'
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]

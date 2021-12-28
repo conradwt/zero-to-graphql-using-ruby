@@ -12,7 +12,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - PostgreSQL 14.1 or newer
 
-- Rails 6.1.4.1 or newer
+- Rails 7.0.1 or newer
 
 - Ruby 3.1.0 or newer
 
@@ -163,6 +163,10 @@ Note: This tutorial was updated on macOS 11.6.2. Docker Desktop is ony needed if
 
     ```bash
     rails new zero-ruby -d postgresql --skip-active-storage --skip-webpack-install --skip-javascript -T --no-rc
+    ```
+
+    ```zsh
+    rails new zero-ruby -d postgresql --skip-active-storage --skip-javascript -T --no-rc
     ```
 
 2.  rename the project directory
