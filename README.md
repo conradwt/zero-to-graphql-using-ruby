@@ -30,37 +30,37 @@ Note: This tutorial was updated on macOS 11.6.2. Docker Desktop is ony needed if
 
 1.  clone this repository
 
-    ```bash
+    ```zsh
     git clone git@github.com:conradwt/zero-to-graphql-using-ruby.git
     ```
 
 2.  change directory location
 
-    ```bash
+    ```zsh
     cd zero-to-graphql-using-ruby
     ```
 
 3.  install dependencies
 
-    ```bash
+    ```zsh
     bundle install
     ```
 
 4.  create, migrate, and seed the database
 
-    ```bash
+    ```zsh
     rails db:setup
     ```
 
 5.  start the server
 
-    ```bash
+    ```zsh
     rails s
     ```
 
 6.  navigate to our application within the browser
 
-    ```bash
+    ```zsh
     open http://localhost:3000/graphiql
     ```
 
@@ -95,13 +95,13 @@ Note: This tutorial was updated on macOS 11.6.2. Docker Desktop is ony needed if
 
 1.  clone this repository
 
-    ```bash
+    ```zsh
     git clone git@github.com:conradwt/zero-to-graphql-using-ruby.git
     ```
 
 2.  change directory location
 
-    ```bash
+    ```zsh
     cd zero-to-graphql-using-ruby
     ```
 
@@ -119,7 +119,7 @@ Note: This tutorial was updated on macOS 11.6.2. Docker Desktop is ony needed if
 
 5.  navigate to our application within the browser
 
-    ```bash
+    ```zsh
     open http://localhost:3000/graphiql
     ```
 
@@ -161,29 +161,25 @@ Note: This tutorial was updated on macOS 11.6.2. Docker Desktop is ony needed if
 
 1.  create the project
 
-    ```bash
-    rails new zero-ruby -d postgresql --skip-active-storage --skip-webpack-install --skip-javascript -T --no-rc
-    ```
-
     ```zsh
     rails new zero-ruby -d postgresql --skip-active-storage --skip-javascript -T --no-rc
     ```
 
 2.  rename the project directory
 
-    ```bash
+    ```zsh
     mv zero-ruby zero-to-graphql-using-ruby
     ```
 
 3.  switch to the project directory
 
-    ```bash
+    ```zsh
     cd zero-to-graphql-using-ruby
     ```
 
 4.  update Ruby gem dependencies
 
-    ```bash
+    ```zsh
     bundle add rack-cors
     ```
 
@@ -211,19 +207,19 @@ Note: This tutorial was updated on macOS 11.6.2. Docker Desktop is ony needed if
 
 7.  create the database
 
-    ```bash
+    ```zsh
     rails db:create
     ```
 
 8.  generate `Person` model
 
-    ```bash
+    ```zsh
     rails g model person first_name last_name username email
     ```
 
 9.  migrate the database
 
-    ```bash
+    ```zsh
     rails db:migrate
     ```
 
@@ -238,7 +234,7 @@ Note: This tutorial was updated on macOS 11.6.2. Docker Desktop is ony needed if
 
 11. generate a `Friendship` model which representing our join model:
 
-    ```bash
+    ```zsh
     rails g model friendship person:references friend:references
     ```
 
@@ -251,7 +247,7 @@ Note: This tutorial was updated on macOS 11.6.2. Docker Desktop is ony needed if
 
 13. migrate the database
 
-    ```bash
+    ```zsh
     rails db:migrate
     ```
 
@@ -416,7 +412,7 @@ Note: This tutorial was updated on macOS 11.6.2. Docker Desktop is ony needed if
 
 24. navigate to our application within the browser
 
-    ```bash
+    ```zsh
     open http://localhost:3000/graphiql
     ```
 
