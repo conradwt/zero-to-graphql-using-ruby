@@ -1,4 +1,4 @@
-class ZeroRailsSchema < GraphQL::Schema
+class ZeroRubySchema < GraphQL::Schema
   mutation(Types::MutationType)
   query(Types::QueryType)
 end
