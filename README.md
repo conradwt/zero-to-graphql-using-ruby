@@ -8,15 +8,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Docker Desktop 4.4.2 or newer
 
-- Node 17.5.0 or newer
+- Node 14.19.0 or newer
 
 - PostgreSQL 14.1 or newer
 
 - Rails 7.0.2.2 or newer
 
-- Ruby 3.1.0 or newer
+- Ruby 3.1.1 or newer
 
-Note: This tutorial was updated on macOS 11.6.4. Docker Desktop is ony needed if you're following the `Docker Installation`.
+Note: This tutorial was updated on macOS 12.2.1. Docker Desktop is ony needed if you're following the `Docker Installation`.
 
 ## Communication
 
