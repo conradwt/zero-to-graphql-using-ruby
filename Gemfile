@@ -13,7 +13,7 @@ gem 'bootsnap',                 '>= 1.9.3', require: false
 gem 'graphql',                  '~> 1.13.2'
 
 gem 'pg',                       '~> 1.2', '>= 1.2.3'
-gem 'puma',                     '~> 5.0'
+gem 'puma',                     '~> 5.6'
 
 gem 'rack-cors',                '~> 1.0'
 
