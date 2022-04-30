@@ -13,7 +13,7 @@ gem 'bootsnap',                 '>= 1.9.3', require: false
 gem 'graphql',                  '~> 1.13.2'
 
 gem 'pg',                       '~> 1.2', '>= 1.2.3'
-gem 'puma',                     '~> 5.0'
+gem 'puma',                     '~> 5.6'
 
 gem 'rack-cors',                '~> 1.0'
 
@@ -25,7 +25,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 
-  gem 'rspec-rails',            '~> 5.0.2'
+  gem 'rspec-rails',            '~> 5.1.1'
 end
 
 group :development do
