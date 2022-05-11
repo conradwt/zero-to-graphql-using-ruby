@@ -12,7 +12,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - PostgreSQL 14.1 or newer
 
-- Rails 7.0.2.4 or newer
+- Rails 7.0.3 or newer
 
 - Ruby 3.1.2 or newer
 
