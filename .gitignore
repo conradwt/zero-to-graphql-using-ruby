@@ -27,3 +27,8 @@
 # Ignore VSCode specific files.
 **/.vscode
 **/.metals
+
+# Ignore Traefik files.
+traefik-v1.yml
+traefik-v2.yml
+traefik.yml
