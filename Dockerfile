@@ -51,7 +51,8 @@ RUN apt-get update -qq -y && \
   ca-certificates=20210119 \
   curl=7.74.0-1.3+deb11u1 \
   libfontconfig1=2.13.1-4.2 \
-  libpq-dev && \
+  libpq-dev \
+  tini=0.19.0-1 && \
   rm -rf /var/lib/apt/lists/*
 
 ENV RAILS_ENV=production
@@ -75,7 +76,7 @@ RUN chmod +x ./entrypoint.sh
 
 RUN chown -R ${USER}:${USER} ${APP_PATH}
 
-ENTRYPOINT ["/sbin/tini", "--", "./entrypoint.sh"]
+ENTRYPOINT ["/usr/bin/tini", "--", "./entrypoint.sh"]
 
 ##
 ## Development
