@@ -2,15 +2,15 @@
 ## Base
 ##
 
-FROM ruby:3.0.2-alpine3.14 as base
+FROM ruby:3.1.2-slim-bullseye as base
 
 # labels from https://github.com/opencontainers/image-spec/blob/master/annotations.md
 LABEL org.opencontainers.image.authors=conradwt@gmail.com
 LABEL org.opencontainers.image.created=$CREATED_DATE
 LABEL org.opencontainers.image.revision=$SOURCE_COMMIT
 LABEL org.opencontainers.image.title="Zero To GraphQL Using Ruby"
-LABEL org.opencontainers.image.url=https://hub.docker.com/u/conradwt/zero-rails
-LABEL org.opencontainers.image.source=https://github.com/conradwt/zero-to-graphql-using-rails
+LABEL org.opencontainers.image.url=https://hub.docker.com/u/conradwt/zero-to-graphql-using-ruby
+LABEL org.opencontainers.image.source=https://github.com/conradwt/zero-to-graphql-using-ruby
 LABEL org.opencontainers.image.licenses=MIT
 LABEL com.conradtaylor.ruby_version=$RUBY_VERSION
 
@@ -31,17 +31,8 @@ ENV UID=1000
 ENV GID=1000
 
 # creates an unprivileged user to be used exclusively to run the Rails app
-RUN \
-  addgroup \
-   -g "${GID}" \
-   -S "${USER}" \
-  && adduser \
-   -s /bin/sh \
-   -u "${UID}" \
-   -G "${USER}" \
-   -h "/home/${USER}" \
-   -D "${USER}" \
-  && su "${USER}"
+RUN groupadd --gid 1000 darnoc \
+  && useradd --uid 1000 --gid darnoc --shell /bin/bash --create-home darnoc
 
 # copy entrypoint scripts and grant execution permissions
 # COPY ./dev-docker-entrypoint.sh /usr/local/bin/dev-entrypoint.sh
@@ -49,21 +40,19 @@ RUN \
 # RUN chmod +x /usr/local/bin/dev-entrypoint.sh && chmod +x /usr/local/bin/test-entrypoint.sh
 
 #
-# https://pkgs.alpinelinux.org/packages?name=&branch=v3.13
+# https://www.debian.org/distrib/packages#view
 #
 
 # install build and runtime dependencies
-RUN apk -U add --no-cache \
-  build-base=0.5-r2 \
-  bzip2=1.0.8-r1 \
-  ca-certificates=20191127-r5 \
-  curl=7.78.0-r0 \
-  fontconfig=2.13.1-r4 \
-  postgresql-dev=13.4-r0 \
-  tini=0.19.0-r0 \
-  tzdata=2021a-r0 && \
-  rm -rf /var/cache/apk/* && \
-  mkdir -p $APP_PATH
+RUN apt-get update -qq -y && \
+  apt-get install -qq --no-install-recommends -y \
+  build-essential=12.9 \
+  bzip2=1.0.8-4 \
+  ca-certificates=20210119 \
+  curl=7.74.0-1.3+deb11u1 \
+  libfontconfig1=2.13.1-4.2 \
+  libpq-dev && \
+  rm -rf /var/lib/apt/lists/*
 
 ENV RAILS_ENV=production
 
@@ -77,6 +66,7 @@ COPY Gemfile* ./
 RUN gem install bundler && \
   rm -rf ${GEM_HOME}/cache/*
 RUN bundle config set without 'development test'
+RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle check || bundle install --jobs 20 --retry 5
 
 COPY . .
@@ -98,6 +88,7 @@ ENV RAILS_ENV=development
 # RUN bundle config list
 RUN bundle config --delete without
 RUN bundle config --delete with
+RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle check || bundle install --jobs 20 --retry 5
 
 USER ${USER}:${USER}

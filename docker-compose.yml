@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
       target: dev
 
-    command: ['rails', 'server', '-p', '3000', '-b', '0.0.0.0']
+    command: ['bin/rails', 'server', '-p', '3000', '-b', '0.0.0.0']
 
     entrypoint: ./dev.entrypoint.sh
 
@@ -32,7 +32,7 @@ services:
         condition: service_healthy
 
   db:
-    image: postgres:13.4-alpine
+    image: postgres:14.3-bullseye
 
     volumes:
       - db_data:/var/lib/postgresql/data

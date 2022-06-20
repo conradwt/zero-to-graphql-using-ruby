@@ -114,7 +114,7 @@ Note: This tutorial was updated on macOS 12.4. Docker Desktop is ony needed if y
 4.  create, migrate, and seed database
 
     ```zsh
-    docker compose exec app rails db:setup
+    docker compose exec app bin/rails db:setup
     ```
 
 5.  navigate to our application within the browser
