@@ -23,21 +23,18 @@ ARG SOURCE_COMMIT=not-set
 ENV APP_PATH /home/darnoc/app
 ENV BUNDLE_PATH /usr/local/bundle/gems
 ENV TMP_PATH /tmp/
+ENV RAILS_ENV=production
 ENV RAILS_LOG_TO_STDOUT true
 ENV RAILS_PORT 3000
+ENV PORT ${RAILS_PORT}
 
 ENV USER=darnoc
 ENV UID=1000
 ENV GID=1000
 
 # creates an unprivileged user to be used exclusively to run the Rails app
-RUN groupadd --gid 1000 darnoc \
-  && useradd --uid 1000 --gid darnoc --shell /bin/bash --create-home darnoc
-
-# copy entrypoint scripts and grant execution permissions
-# COPY ./dev-docker-entrypoint.sh /usr/local/bin/dev-entrypoint.sh
-# COPY ./test-docker-entrypoint.sh /usr/local/bin/test-entrypoint.sh
-# RUN chmod +x /usr/local/bin/dev-entrypoint.sh && chmod +x /usr/local/bin/test-entrypoint.sh
+RUN groupadd --gid ${GID} ${USER} \
+  && useradd --uid ${UID} --gid ${GID} --shell /bin/bash --create-home ${USER}
 
 #
 # https://www.debian.org/distrib/packages#view
@@ -55,14 +52,11 @@ RUN apt-get update -qq -y && \
   tini=0.19.0-1 && \
   rm -rf /var/lib/apt/lists/*
 
-ENV RAILS_ENV=production
-
 EXPOSE ${RAILS_PORT}
-ENV PORT ${RAILS_PORT}
 
 WORKDIR ${APP_PATH}
 
-COPY Gemfile* ./
+COPY --chown=darnoc:darnoc Gemfile* ./
 
 RUN gem install bundler && \
   rm -rf ${GEM_HOME}/cache/*
@@ -70,17 +64,11 @@ RUN bundle config set without 'development test'
 RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle check || bundle install --jobs 20 --retry 5
 
-COPY . .
-
-RUN chmod +x ./entrypoint.sh
-
-RUN chown -R ${USER}:${USER} ${APP_PATH}
-
-ENTRYPOINT ["/usr/bin/tini", "--", "./entrypoint.sh"]
-
 ##
 ## Development
 ##
+
+# note:  no source added, assumes bind mount
 
 FROM base as dev
 
@@ -92,40 +80,45 @@ RUN bundle config --delete with
 RUN bundle config build.nokogiri --use-system-libraries
 RUN bundle check || bundle install --jobs 20 --retry 5
 
-USER ${USER}:${USER}
-
 CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+
+##
+## Source
+##
+
+# note:  copy in source code for test and prod stages
+#        we do this in its own stage to ensure the
+#        layers we test are the exact hashed layers the cache
+#        uses to build prod stage
+
+FROM base as source
+
+COPY --chown=darnoc:darnoc . .
+
+# RUN chmod +x ./entrypoint.sh
 
 ##
 ## Test
 ##
 
-FROM dev as test
+# note: combine source code and dev stage deps
 
-USER ${USER}:${USER}
+FROM source as test
+
+ENV RAILS_ENV=test
+
+RUN bundle exec robocop
 
 CMD ["bundle", "exec", "rspec"]
-
-##
-## Pre-Production
-##
-
-FROM test as pre-prod
-
-USER root
-
-RUN rm -rf ./spec
 
 ##
 ## Production
 ##
 
-FROM base as prod
-
-COPY --from=pre-prod ${APP_PATH} ${APP_PATH}
+FROM source as prod
 
 HEALTHCHECK CMD curl http://127.0.0.1/ || exit 1
 
-USER ${USER}:${USER}
+ENTRYPOINT ["/usr/bin/tini", "--", "./entrypoint.sh"]
 
 CMD ["bin/rails", "server", "-b", "0.0.0.0", "-e", "production"]
