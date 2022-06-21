@@ -33,8 +33,8 @@ ENV UID=1000
 ENV GID=1000
 
 # creates an unprivileged user to be used exclusively to run the Rails app
-RUN groupadd --gid 1000 darnoc \
-  && useradd --uid 1000 --gid darnoc --shell /bin/bash --create-home darnoc
+RUN groupadd --gid ${GID} ${USER} \
+  && useradd --uid ${UID} --gid ${GID} --shell /bin/bash --create-home ${USER}
 
 #
 # https://www.debian.org/distrib/packages#view
