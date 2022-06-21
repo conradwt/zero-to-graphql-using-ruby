@@ -95,8 +95,6 @@ FROM base as source
 
 COPY --chown=darnoc:darnoc . .
 
-# RUN chmod +x ./entrypoint.sh
-
 ##
 ## Test
 ##
