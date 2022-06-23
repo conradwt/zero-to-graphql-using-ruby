@@ -8,8 +8,6 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Docker Desktop 4.9.1 or newer
 
-- Node 18.3.0 or newer
-
 - PostgreSQL 14.3 or newer
 
 - Rails 7.0.3 or newer
