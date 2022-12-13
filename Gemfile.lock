@@ -89,7 +89,7 @@ GEM
     io-console (0.5.11)
     irb (1.6.0)
       reline (>= 0.3.0)
-    loofah (2.19.0)
+    loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.8.0)
@@ -117,6 +117,8 @@ GEM
     nokogiri (1.13.10-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.13.10-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.10-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.5)
     puma (5.6.5)
@@ -200,6 +202,7 @@ PLATFORMS
   aarch64-linux-musl
   arm64-darwin-21
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (~> 1.11, >= 1.11.1)
