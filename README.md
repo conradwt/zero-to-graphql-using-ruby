@@ -476,4 +476,4 @@ Zero to GraphQL Using Ruby is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-copyright:: (c) Copyright 2019 - 2022 Conrad Taylor. All Rights Reserved.
+copyright:: (c) Copyright 2019 - 2023 Conrad Taylor. All Rights Reserved.
