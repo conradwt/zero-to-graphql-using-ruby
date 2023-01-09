@@ -6,7 +6,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Docker Desktop 4.9.1 or newer
+- Docker Desktop 4.15.0 or newer
 
 - PostgreSQL 14.6 or newer
 
