@@ -6,9 +6,9 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Docker Desktop 4.15.0 or newer
+- Docker Desktop 4.16.2 or newer
 
-- PostgreSQL 14.6 or newer
+- PostgreSQL 14.7 or newer
 
 - Rails 7.0.4.2 or newer
 
