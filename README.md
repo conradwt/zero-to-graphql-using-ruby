@@ -402,19 +402,37 @@ Note: This tutorial was updated on macOS 12.6.2. Docker Desktop is ony needed if
     //= link graphiql/rails/application.js
     ```
 
-23. start the server
+23. add routes for our GraphQL API and GraphiQL browser endpoints:
+
+    `./config/routes.rb`:
+
+    replace the contents with the following:
+
+    ```ruby
+    # frozen_string_literal: true
+    
+    Rails.application.routes.draw do
+      if Rails.env.development? or Rails.env.test?
+        mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
+      end
+
+      post '/graphql', to: 'graphql#execute'
+    end
+    ```
+
+24. start the server
 
     ```zsh
     rails s
     ```
 
-24. navigate to our application within the browser
+25. navigate to our application within the browser
 
     ```zsh
     open http://localhost:3000/graphiql
     ```
 
-25. enter the below GraphQL query on the left side of the browser window
+26. enter the below GraphQL query on the left side of the browser window
 
     ```graphql
     {
@@ -433,7 +451,7 @@ Note: This tutorial was updated on macOS 12.6.2. Docker Desktop is ony needed if
     }
     ```
 
-26. run the GraphQL query
+27. run the GraphQL query
 
     ```text
     Control + Enter
