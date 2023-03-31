@@ -14,7 +14,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Ruby 3.2.2 or newer
 
-Note: This tutorial was updated on macOS 12.6.2. Docker Desktop is ony needed if you're following the `Docker Installation`.
+Note: This tutorial was updated on macOS 13.3. Docker Desktop is ony needed if you're following the `Docker Installation`.
 
 ## Communication
 
@@ -410,7 +410,7 @@ Note: This tutorial was updated on macOS 12.6.2. Docker Desktop is ony needed if
 
     ```ruby
     # frozen_string_literal: true
-    
+
     Rails.application.routes.draw do
       if Rails.env.development? or Rails.env.test?
         mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql'
