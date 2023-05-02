@@ -8,13 +8,13 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Docker Desktop 4.16.2 or newer
 
-- PostgreSQL 14.7 or newer
+- PostgreSQL 15.1 or newer
 
 - Rails 7.0.4.3 or newer
 
 - Ruby 3.2.2 or newer
 
-Note: This tutorial was updated on macOS 13.3. Docker Desktop is ony needed if you're following the `Docker Installation`.
+Note: This tutorial was updated on macOS 13.3.1. Docker Desktop is ony needed if you're following the `Docker Installation`.
 
 ## Communication
 
