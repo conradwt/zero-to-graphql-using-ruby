@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
-gem 'rails',                    '~> 7.0', '>= 7.0.6'
+gem 'rails',                    '~> 7.0', '>= 7.0.7'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap',                 '~> 1.11', '>= 1.11.1', require: false
