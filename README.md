@@ -8,7 +8,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Docker Desktop 4.16.2 or newer
 
-- PostgreSQL 15.3 or newer
+- PostgreSQL 15.4 or newer
 
 - Rails 7.0.7.2 or newer
 
