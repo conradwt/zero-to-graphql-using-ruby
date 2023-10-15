@@ -5,7 +5,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.2.2'
 
-gem 'rails',                    '~> 7.1'
+gem 'rails',                    '~> 7.1.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap',                 '~> 1.11', '>= 1.11.1', require: false
@@ -23,7 +23,7 @@ gem 'sprockets-rails',          '~> 3.4', '>= 3.4.2'
 gem 'tzinfo-data',              '~> 1.2022', '>= 1.2022.1', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
-  gem 'debug',                  '~> 1.5.0', platforms: %i[ mri mingw x64_mingw ]
+  gem 'debug',                  '~> 1.5.0', platforms: %i[mri mingw x64_mingw]
 
   gem 'rspec-rails',            '~> 5.1.2'
 end
