@@ -102,10 +102,10 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.9.0)
+    irb (1.9.1)
       rdoc
       reline (>= 0.3.8)
-    loofah (2.21.4)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -118,7 +118,7 @@ GEM
     minitest (5.20.0)
     msgpack (1.7.2)
     mutex_m (0.2.0)
-    net-imap (0.4.4)
+    net-imap (0.4.6)
       date
       net-protocol
     net-pop (0.1.2)
@@ -127,12 +127,12 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.5.9)
-    nokogiri (1.15.4-aarch64-linux)
+    nio4r (2.6.1)
+    nokogiri (1.15.5-aarch64-linux)
       racc (~> 1.4)
-    nokogiri (1.15.4-arm64-darwin)
+    nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-darwin)
+    nokogiri (1.15.5-x86_64-darwin)
       racc (~> 1.4)
     pg (1.5.4)
     psych (5.1.1.1)
@@ -244,7 +244,7 @@ DEPENDENCIES
   puma (~> 5.6, >= 5.6.4)
   rack-cors (~> 1.1, >= 1.1.1)
   rack-mini-profiler (~> 3.0.0)
-  rails (~> 7.1.1)
+  rails (~> 7.1.2)
   rspec-rails (~> 5.1.2)
   sprockets-rails (~> 3.4, >= 3.4.2)
   tzinfo-data (~> 1.2022, >= 1.2022.1)
