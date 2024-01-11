@@ -10,7 +10,7 @@ gem 'rails',                    '~> 7.1.2'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap',                 '~> 1.11', '>= 1.11.1', require: false
 
-gem 'graphql',                  '~> 2.1', '>= 2.1.6'
+gem 'graphql',                  '~> 2.2', '>= 2.2.5'
 
 gem 'pg',                       '~> 1.3', '>= 1.3.5'
 gem 'puma',                     '~> 5.6', '>= 5.6.4'
