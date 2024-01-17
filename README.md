@@ -10,7 +10,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - PostgreSQL 15.5 or newer
 
-- Rails 7.1.2 or newer
+- Rails 7.1.3 or newer
 
 - Ruby 3.3.0 or newer
 
@@ -494,4 +494,4 @@ Zero to GraphQL Using Ruby is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-copyright:: (c) Copyright 2019 - 2023 Conrad Taylor. All Rights Reserved.
+copyright:: (c) Copyright 2019 - 2024 Conrad Taylor. All Rights Reserved.
