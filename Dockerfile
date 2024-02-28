@@ -48,7 +48,7 @@ RUN apt-get update -qq -y && \
   build-essential=12.9 \
   bzip2=1.0.8-4 \
   ca-certificates=20210119 \
-  curl=7.74.0-1.3+deb11u1 \
+  curl=7.74.0-1.3+deb11u11 \
   libfontconfig1=2.13.1-4.2 \
   libpq-dev \
   tini=0.19.0-1 && \
