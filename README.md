@@ -6,15 +6,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Docker Desktop 4.16.2 or newer
+- Docker Desktop 4.28.0 or newer
 
-- PostgreSQL 15.5 or newer
+- PostgreSQL 15.6 or newer
 
 - Rails 7.1.3.2 or newer
 
 - Ruby 3.3.0 or newer
 
-Note: This tutorial was updated on macOS 14.3.1. Docker Desktop is ony needed if you're following the `Docker Installation`.
+Note: This tutorial was updated on macOS 14.4. Docker Desktop is ony needed if you're following the `Docker Installation`.
 
 ## Communication
 
@@ -310,7 +310,7 @@ Note: This tutorial was updated on macOS 14.3.1. Docker Desktop is ony needed if
 17. add `graphql` Ruby gem to your `Gemfile` dependencies as follows:
 
     ```zsh
-    bundle add graphql
+    bundle add graphql --version '~> 2.3'
     ```
 
 18. configure the graphql dependencies for our application
