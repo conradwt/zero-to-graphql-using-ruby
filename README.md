@@ -12,7 +12,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Rails 7.1.3.2 or newer
 
-- Ruby 3.3.0 or newer
+- Ruby 3.3.1 or newer
 
 Note: This tutorial was updated on macOS 14.4. Docker Desktop is ony needed if you're following the `Docker Installation`.
 
