@@ -6,11 +6,11 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Docker Desktop 4.28.0 or newer
+- Docker Desktop 4.30.0 or newer
 
 - PostgreSQL 15.6 or newer
 
-- Rails 7.1.3.2 or newer
+- Rails 7.1.3.3 or newer
 
 - Ruby 3.3.1 or newer
 
