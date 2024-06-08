@@ -24,15 +24,15 @@ services:
 
     volumes:
       - .:/home/darnoc/app
-      - shared_data:/var/shared
-      - gem_cache:/usr/local/bundle/gems
+      - shared-data:/var/shared
+      - gem-cache:/usr/local/bundle/gems
 
     depends_on:
       db:
         condition: service_healthy
 
   db:
-    image: postgres:14.3-bullseye
+    image: postgres:16.3-bullseye
 
     volumes:
       - db_data:/var/lib/postgresql/data
@@ -53,6 +53,6 @@ services:
       retries: 5
 
 volumes:
-  db_data: {}
-  gem_cache: {}
-  shared_data: {}
+  db-data: {}
+  gem-cache: {}
+  shared-data: {}
