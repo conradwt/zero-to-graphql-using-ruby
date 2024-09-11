@@ -3,14 +3,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.3.4'
+ruby '3.3.5'
 
 gem 'rails',                    '~> 7.1.3.4'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap',                 '~> 1.11', '>= 1.11.1', require: false
 
-gem 'graphql',                  '~> 2.3.14'
+gem 'graphql',                  '~> 2.3.15'
 
 gem 'pg',                       '~> 1.3', '>= 1.3.5'
 gem 'puma',                     '~> 6.4', '>= 6.4.2'

@@ -97,7 +97,7 @@ GEM
     graphiql-rails (1.8.0)
       railties
       sprockets-rails
-    graphql (2.3.14)
+    graphql (2.3.15)
       base64
       fiber-storage
     i18n (1.14.5)
@@ -135,7 +135,7 @@ GEM
       racc (~> 1.4)
     nokogiri (1.16.7-x86_64-darwin)
       racc (~> 1.4)
-    pg (1.5.7)
+    pg (1.5.8)
     psych (5.1.2)
       stringio
     puma (6.4.2)
@@ -189,7 +189,7 @@ GEM
       io-console (~> 0.5)
     rspec-core (3.13.1)
       rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.2)
+    rspec-expectations (3.13.3)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
     rspec-mocks (3.13.1)
@@ -251,7 +251,7 @@ DEPENDENCIES
   web-console (~> 4.2.0)
 
 RUBY VERSION
-   ruby 3.3.4p94
+   ruby 3.3.5p100
 
 BUNDLED WITH
-   2.5.14
+   2.5.18
