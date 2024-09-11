@@ -2,7 +2,7 @@
 ## Base
 ##
 
-FROM ruby:3.3.4-slim-bullseye as base
+FROM ruby:3.3.5-slim-bullseye as base
 
 # labels from https://github.com/opencontainers/image-spec/blob/master/annotations.md
 LABEL org.opencontainers.image.authors=conradwt@gmail.com
