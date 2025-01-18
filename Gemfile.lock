@@ -138,7 +138,7 @@ GEM
     nokogiri (1.18.1-x86_64-darwin)
       racc (~> 1.4)
     pg (1.5.9)
-    psych (5.2.2)
+    psych (5.2.3)
       date
       stringio
     puma (6.5.0)
