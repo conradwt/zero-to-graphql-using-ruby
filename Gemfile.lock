@@ -216,7 +216,7 @@ GEM
       rspec-expectations (~> 3.10)
       rspec-mocks (~> 3.10)
       rspec-support (~> 3.10)
-    rspec-support (3.13.4)
+    rspec-support (3.13.5)
     sprockets (4.2.2)
       concurrent-ruby (~> 1.0)
       logger
