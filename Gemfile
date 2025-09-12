@@ -20,10 +20,10 @@ gem 'rack-cors',                '~> 1.1', '>= 1.1.1'
 gem 'sprockets-rails',          '~> 3.4', '>= 3.4.2'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data',              '~> 1.2022', '>= 1.2022.1', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data',              '~> 1.2022', '>= 1.2022.1', platforms: %i[windows jruby]
 
 group :development, :test do
-  gem 'debug',                  '~> 1.5.0', platforms: %i[mri mingw x64_mingw]
+  gem 'debug',                  '~> 1.5.0', platforms: %i[windows]
 
   gem 'rspec-rails',            '~> 5.1.2'
 end
