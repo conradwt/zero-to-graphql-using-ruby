@@ -1,4 +1,4 @@
-name: 'zero-to-graphql-using-ruby'
+name: "zero-to-graphql-using-ruby"
 
 services:
   rails-app:
@@ -22,13 +22,13 @@ services:
       - postgres
 
   redis:
-    image: redis:7.2
+    image: redis:8.2.2
     restart: unless-stopped
     volumes:
       - redis-data:/data
 
   postgres:
-    image: postgres:16.4-bullseye
+    image: postgres:18.0
     restart: unless-stopped
     networks:
       - default
