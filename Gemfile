@@ -15,7 +15,7 @@ gem 'graphql',                  '~> 2.3.22'
 gem 'pg',                       '~> 1.3', '>= 1.3.5'
 gem 'puma',                     '~> 6.4', '>= 6.4.2'
 
-gem 'rack-cors',                '~> 1.1', '>= 1.1.1'
+gem 'rack-cors',                '~> 3.0'
 
 gem 'sprockets-rails',          '~> 3.4', '>= 3.4.2'
 
