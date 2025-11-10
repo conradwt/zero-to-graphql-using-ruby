@@ -29,7 +29,7 @@ group :development, :test do
 end
 
 group :development do
-  gem 'graphiql-rails',         '~> 1.8.0'
+  gem 'graphiql-rails',         '~> 1.10.5'
 
   gem 'rack-mini-profiler',     '~> 3.0.0'
 
