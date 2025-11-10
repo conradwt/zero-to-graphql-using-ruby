@@ -1,125 +1,72 @@
-##
-## Base
-##
+# syntax=docker/dockerfile:1
+# check=error=true
 
-FROM ruby:3.3.6-slim-bullseye as base
+# This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
+# docker build -t flix .
+# docker run -d -p 80:80 -e RAILS_MASTER_KEY=<value from config/master.key> --name flix flix
 
-# labels from https://github.com/opencontainers/image-spec/blob/master/annotations.md
-LABEL org.opencontainers.image.authors=conradwt@gmail.com
-LABEL org.opencontainers.image.created=$CREATED_DATE
-LABEL org.opencontainers.image.revision=$SOURCE_COMMIT
-LABEL org.opencontainers.image.title="Zero To GraphQL Using Ruby"
-LABEL org.opencontainers.image.url=https://hub.docker.com/u/conradwt/zero-to-graphql-using-ruby
-LABEL org.opencontainers.image.source=https://github.com/conradwt/zero-to-graphql-using-ruby
-LABEL org.opencontainers.image.licenses=MIT
-LABEL com.conradtaylor.ruby_version=$RUBY_VERSION
+# For a containerized dev environment, see Dev Containers: https://guides.rubyonrails.org/getting_started_with_devcontainer.html
 
-# set this with shell variables at build-time.
-# If they aren't set, then not-set will be default.
-ARG CREATED_DATE=not-set
-ARG SOURCE_COMMIT=not-set
+# Make sure RUBY_VERSION matches the Ruby version in .ruby-version
+ARG RUBY_VERSION=3.4.7
+FROM docker.io/library/ruby:$RUBY_VERSION-slim AS base
 
-# environment variables
-ENV APP_PATH /home/darnoc/app
-ENV BUNDLE_PATH /usr/local/bundle/gems
-ENV TMP_PATH /tmp/
-ENV RAILS_ENV=production
-ENV RAILS_LOG_TO_STDOUT true
-ENV RAILS_PORT 3000
-ENV PORT ${RAILS_PORT}
-ENV GEM_HOME="/usr/local/bundle"
-ENV PATH ${GEM_HOME}/bin:${GEM_HOME}/gems/bin:${PATH}
+# Rails app lives here
+WORKDIR /rails
 
-ENV USER=darnoc
-ENV UID=1000
-ENV GID=1000
+# Install base packages
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-# creates an unprivileged user to be used exclusively to run the Rails app
-RUN groupadd --gid ${GID} ${USER} \
-  && useradd --uid ${UID} --gid ${GID} --shell /bin/bash --create-home ${USER}
+# Set production environment
+ENV RAILS_ENV="production" \
+    BUNDLE_DEPLOYMENT="1" \
+    BUNDLE_PATH="/usr/local/bundle" \
+    BUNDLE_WITHOUT="development"
 
-#
-# https://www.debian.org/distrib/packages#view
-#
+# Throw-away build stage to reduce size of final image
+FROM base AS build
 
-# install build and runtime dependencies
-RUN apt-get update -qq -y && \
-  apt-get install -qq --no-install-recommends -y \
-  build-essential=12.9 \
-  bzip2=1.0.8-4 \
-  ca-certificates=20210119 \
-  curl=7.74.0-1.3+deb11u11 \
-  libfontconfig1=2.13.1-4.2 \
-  libpq-dev \
-  tini=0.19.0-1 && \
-  rm -rf /var/lib/apt/lists/*
+# Install packages needed to build gems
+RUN apt-get update -qq && \
+    apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config && \
+    rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-EXPOSE ${RAILS_PORT}
+# Install application gems
+COPY Gemfile Gemfile.lock ./
+RUN bundle install && \
+    rm -rf ~/.bundle/ "${BUNDLE_PATH}"/ruby/*/cache "${BUNDLE_PATH}"/ruby/*/bundler/gems/*/.git && \
+    bundle exec bootsnap precompile --gemfile
 
-WORKDIR ${APP_PATH}
+# Copy application code
+COPY . .
 
-COPY --chown=darnoc:darnoc Gemfile* ./
-RUN chown -R ${USER}:${USER} ${GEM_HOME}
+# Precompile bootsnap code for faster boot times
+RUN bundle exec bootsnap precompile app/ lib/
 
-RUN gem install bundler && \
-  rm -rf ${GEM_HOME}/cache/*
-RUN bundle config set without 'development test'
-RUN bundle config build.nokogiri --use-system-libraries
-RUN bundle check || bundle install --jobs 20 --retry 5
+# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
-##
-## Development
-##
 
-# note:  no source added, assumes bind mount
 
-FROM base as dev
 
-ENV RAILS_ENV=development
+# Final stage for app image
+FROM base
 
-# RUN bundle config list
-RUN bundle config --delete without
-RUN bundle config --delete with
-RUN bundle config build.nokogiri --use-system-libraries
-RUN bundle check || bundle install --jobs 20 --retry 5
+# Copy built artifacts: gems, application
+COPY --from=build "${BUNDLE_PATH}" "${BUNDLE_PATH}"
+COPY --from=build /rails /rails
 
-CMD ["bin/rails", "server", "-b", "0.0.0.0"]
+# Run and own only the runtime files as a non-root user for security
+RUN groupadd --system --gid 1000 rails && \
+    useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash && \
+    chown -R rails:rails db log storage tmp
+USER 1000:1000
 
-##
-## Source
-##
+# Entrypoint prepares the database.
+ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
-# note:  copy in source code for test and prod stages
-#        we do this in its own stage to ensure the
-#        layers we test are the exact hashed layers the cache
-#        uses to build prod stage
-
-FROM base as source
-
-COPY --chown=darnoc:darnoc . .
-
-##
-## Test
-##
-
-# note: combine source code and dev stage deps
-
-FROM source as test
-
-ENV RAILS_ENV=test
-
-RUN bundle exec robocop
-
-CMD ["bundle", "exec", "rspec"]
-
-##
-## Production
-##
-
-FROM source as prod
-
-HEALTHCHECK CMD curl http://127.0.0.1/ || exit 1
-
-ENTRYPOINT ["/usr/bin/tini", "--", "./entrypoint.sh"]
-
-CMD ["bin/rails", "server", "-b", "0.0.0.0", "-e", "production"]
+# Start server via Thruster by default, this can be overwritten at runtime
+EXPOSE 80
+CMD ["./bin/thrust", "./bin/rails", "server"]
