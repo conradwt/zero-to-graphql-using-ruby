@@ -31,7 +31,7 @@ end
 group :development do
   gem 'graphiql-rails',         '~> 1.8.0'
 
-  gem 'rack-mini-profiler',     '~> 3.0.0'
+  gem 'rack-mini-profiler',     '~> 4.0.1'
 
   gem 'web-console',            '~> 4.2.0'
 end
