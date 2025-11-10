@@ -58,6 +58,3 @@ README.md
 
 # Ignore VSCode artifacts.
 **/.metals
-
-# Ignore Traefik files.
-traefik*
