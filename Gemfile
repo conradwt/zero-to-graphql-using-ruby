@@ -1,37 +1,63 @@
-# frozen_string_literal: true
+source "https://rubygems.org"
 
-source 'https://rubygems.org'
-git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+# Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
+gem "rails",                    "~> 8.1.1"
 
-ruby '3.4.7'
+# The modern asset pipeline for Rails [https://github.com/rails/propshaft]
+gem "propshaft",                "~> 1.3", ">= 1.3.1"
 
-gem 'rails',                    '~> 7.1.3.4'
+# Use postgresql as the database for Active Record
+gem "pg",                       "~> 1.1"
 
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap',                 '~> 1.11', '>= 1.11.1', require: false
+# Use the Puma web server [https://github.com/puma/puma]
+gem "puma",                     "~> 7.1"
 
-gem 'graphql',                  '~> 2.3.22'
+# Build JSON APIs with ease [https://github.com/rails/jbuilder]
+gem "jbuilder",                 "~> 2.14", ">= 2.14.1"
 
-gem 'pg',                       '~> 1.3', '>= 1.3.5'
-gem 'puma',                     '~> 6.4', '>= 6.4.2'
-
-gem 'rack-cors',                '~> 1.1', '>= 1.1.1'
-
-gem 'sprockets-rails',          '~> 3.4', '>= 3.4.2'
+# Use Active Model has_secure_password [https://guides.rubyonrails.org/active_model_basics.html#securepassword]
+# gem "bcrypt",                 "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data',              '~> 1.2022', '>= 1.2022.1', platforms: %i[windows jruby]
+gem "tzinfo-data",              "~> 1.2025", ">= 1.2025.2", platforms: %i[ windows jruby ]
+
+# Use the database-backed adapters for Rails.cache, Active Job, and Action Cable
+gem "solid_cache",              "~> 1.0", ">= 1.0.10"
+gem "solid_queue",              "~> 1.2", ">= 1.2.4"
+gem "solid_cable",              "~> 3.0", ">= 3.0.12"
+
+# Reduces boot times through caching; required in config/boot.rb
+gem "bootsnap",                 "~> 1.18", ">= 1.18.6", require: false
+
+# Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
+gem "kamal",                    "~> 2.8", ">= 2.8.2", require: false
+
+# Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
+gem "thruster",                 "~> 0.1.16", require: false
+
+gem "graphql",                  "~> 2.3.22"
+
+gem "rack-cors",                "~> 3.0"
 
 group :development, :test do
-  gem 'debug',                  '~> 1.5.0', platforms: %i[windows]
+  # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem "debug", platforms: %i[ mri windows ], require: "debug/prelude"
 
-  gem 'rspec-rails',            '~> 5.1.2'
+  # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
+  gem "bundler-audit", require: false
+
+  # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
+  gem "brakeman", require: false
+
+  gem "rspec-rails",            "~> 5.1.2"
+
+  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+  gem "rubocop-rails-omakase", require: false
 end
 
 group :development do
-  gem 'graphiql-rails',         '~> 1.8.0'
+  gem "graphiql-rails",         "~> 1.10", ">= 1.10.5"
 
-  gem 'rack-mini-profiler',     '~> 3.0.0'
-
-  gem 'web-console',            '~> 4.2.0'
+  # Use console on exceptions pages [https://github.com/rails/web-console]
+  gem "web-console"
 end
