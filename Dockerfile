@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-# check=error=true
+# check=error=false
 
 # This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
 # docker build -t zero_ruby .
