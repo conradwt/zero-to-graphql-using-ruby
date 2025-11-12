@@ -8,13 +8,13 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Docker Desktop 4.30.0 or newer
 
-- PostgreSQL 16.4 or newer
+- PostgreSQL 18.0 or newer
 
-- Rails 7.1.3.4 or newer
+- Rails 8.1.1 or newer
 
 - Ruby 3.4.7 or newer
 
-Note: This tutorial was updated on macOS 15.4. Docker Desktop is ony needed if you're following the `Docker Installation`.
+Note: This tutorial was updated on macOS 26.1 (Tahoe). Docker Desktop is ony needed if you're following the `Docker Installation`.
 
 ## Communication
 
@@ -178,7 +178,7 @@ Note: This tutorial was updated on macOS 15.4. Docker Desktop is ony needed if y
 4.  update Ruby gem dependencies
 
     ```zsh
-    bundle add rack-cors
+    bundle add rack-cors --version '~> 3.0.0'
     ```
 
 5.  add CORS initializer by adding the following text within the `config/initializers/cors.rb` file:
@@ -310,7 +310,7 @@ Note: This tutorial was updated on macOS 15.4. Docker Desktop is ony needed if y
 17. add `graphql` Ruby gem to your `Gemfile` dependencies as follows:
 
     ```zsh
-    bundle add graphql --version '~> 2.3'
+    bundle add graphql --version '~> 2.5.14'
     ```
 
 18. configure the graphql dependencies for our application
