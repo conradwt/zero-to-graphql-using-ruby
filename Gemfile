@@ -35,7 +35,7 @@ gem "kamal",                    "~> 2.8", ">= 2.8.2", require: false
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
 gem "thruster",                 "~> 0.1.16", require: false
 
-gem "graphql",                  "~> 2.3.22"
+gem "graphql",                  "~> 2.5.14"
 
 gem "rack-cors",                "~> 3.0"
 
