@@ -37,7 +37,7 @@ gem "thruster",                 "~> 0.1.16", require: false
 
 gem "graphql",                  "~> 2.3.22"
 
-gem "rack-cors",                "~> 1.1", ">= 1.1.1"
+gem "rack-cors",                "~> 3.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
