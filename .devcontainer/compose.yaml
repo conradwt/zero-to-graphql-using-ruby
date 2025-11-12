@@ -1,4 +1,4 @@
-name: "zero-to-graphql-using-ruby"
+name: "zero_ruby"
 
 services:
   rails-app:
@@ -7,7 +7,7 @@ services:
       dockerfile: .devcontainer/Dockerfile
 
     volumes:
-      - ../..:/workspaces:cached
+      - ../../zero_ruby:/workspaces/zero_ruby:cached
 
     # Overrides default command so things don't shut down after the process ends.
     command: sleep infinity
@@ -18,14 +18,7 @@ services:
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
     depends_on:
-      - redis
       - postgres
-
-  redis:
-    image: redis:8.2.3
-    restart: unless-stopped
-    volumes:
-      - redis-data:/data
 
   postgres:
     image: postgres:18.0
@@ -39,5 +32,4 @@ services:
       POSTGRES_PASSWORD: postgres
 
 volumes:
-  redis-data:
   postgres-data:
