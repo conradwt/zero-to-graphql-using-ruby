@@ -1,6 +1,6 @@
 The MIT License (MIT)
 
-Copyright © 2019 - 2024 Conrad Taylor. All Rights Reserved.
+Copyright © 2019 - 2025 Conrad Taylor. All Rights Reserved.
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
