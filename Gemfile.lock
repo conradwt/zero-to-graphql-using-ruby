@@ -80,7 +80,7 @@ GEM
     bcrypt_pbkdf (1.1.1)
     bigdecimal (3.3.1)
     bindex (0.8.1)
-    bootsnap (1.18.6)
+    bootsnap (1.19.0)
       msgpack (~> 1.2)
     brakeman (7.1.1)
       racc
@@ -175,6 +175,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.18.10-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.18.10-x86_64-linux-gnu)
+      racc (~> 1.4)
     ostruct (0.6.3)
     parallel (1.27.0)
     parser (3.3.10.0)
@@ -184,6 +186,7 @@ GEM
     pg (1.6.2-aarch64-linux-musl)
     pg (1.6.2-arm64-darwin)
     pg (1.6.2-x86_64-darwin)
+    pg (1.6.2-x86_64-linux)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -324,6 +327,7 @@ GEM
     thruster (0.1.16-aarch64-linux)
     thruster (0.1.16-arm64-darwin)
     thruster (0.1.16-x86_64-darwin)
+    thruster (0.1.16-x86_64-linux)
     timeout (0.4.4)
     tsort (0.2.0)
     tzinfo (2.0.6)
@@ -353,9 +357,10 @@ PLATFORMS
   arm64-darwin-24
   arm64-darwin-25
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
-  bootsnap (~> 1.18, >= 1.18.6)
+  bootsnap (~> 1.19)
   brakeman
   bundler-audit
   debug
