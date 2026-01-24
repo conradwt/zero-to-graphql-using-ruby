@@ -12,7 +12,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Rails 8.1.1 or newer
 
-- Ruby 3.4.7 or newer
+- Ruby 4.0.1 or newer
 
 Note: This tutorial was updated on macOS 26.1 (Tahoe). Docker Desktop is ony needed if you're following the `Docker Installation`.
 
@@ -485,4 +485,4 @@ Zero to GraphQL Using Ruby is released under the [MIT license](./LICENSE.md).
 
 ## Copyright
 
-copyright:: (c) Copyright 2019 - 2025 Conrad Taylor. All Rights Reserved.
+copyright:: (c) Copyright 2019 - 2026 Conrad Taylor. All Rights Reserved.
