@@ -33,7 +33,7 @@ gem "bootsnap",                 "~> 1.18", ">= 1.18.6", require: false
 gem "kamal",                    "~> 2.8", ">= 2.8.2", require: false
 
 # Add HTTP asset caching/compression and X-Sendfile acceleration to Puma [https://github.com/basecamp/thruster/]
-gem "thruster",                 "~> 0.1.16", require: false
+gem "thruster",                 "~> 0.1.18", require: false
 
 gem "graphql",                  "~> 2.3.22"
 
