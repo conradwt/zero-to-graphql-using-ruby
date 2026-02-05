@@ -111,9 +111,10 @@ GEM
       activesupport (>= 6.1)
     graphiql-rails (1.10.5)
       railties
-    graphql (2.3.22)
+    graphql (2.5.19)
       base64
       fiber-storage
+      logger
     i18n (1.14.8)
       concurrent-ruby (~> 1.0)
     io-console (0.8.2)
@@ -176,6 +177,8 @@ GEM
       racc (~> 1.4)
     nokogiri (1.19.0-x86_64-darwin)
       racc (~> 1.4)
+    nokogiri (1.19.0-x86_64-linux-gnu)
+      racc (~> 1.4)
     ostruct (0.6.3)
     parallel (1.27.0)
     parser (3.3.10.1)
@@ -185,6 +188,7 @@ GEM
     pg (1.6.3-aarch64-linux-musl)
     pg (1.6.3-arm64-darwin)
     pg (1.6.3-x86_64-darwin)
+    pg (1.6.3-x86_64-linux)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -325,6 +329,7 @@ GEM
     thruster (0.1.18-aarch64-linux)
     thruster (0.1.18-arm64-darwin)
     thruster (0.1.18-x86_64-darwin)
+    thruster (0.1.18-x86_64-linux)
     timeout (0.6.0)
     tsort (0.2.0)
     tzinfo (2.0.6)
@@ -354,6 +359,7 @@ PLATFORMS
   arm64-darwin-24
   arm64-darwin-25
   x86_64-darwin-20
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap (~> 1.18, >= 1.18.6)
@@ -361,7 +367,7 @@ DEPENDENCIES
   bundler-audit
   debug
   graphiql-rails (~> 1.10, >= 1.10.5)
-  graphql (~> 2.3.22)
+  graphql (~> 2.5.19)
   jbuilder (~> 2.14, >= 2.14.1)
   kamal (~> 2.8, >= 2.8.2)
   pg (~> 1.1)
