@@ -21,7 +21,7 @@ services:
       - postgres
 
   postgres:
-    image: postgres:18.3
+    image: postgres:18.4
     restart: unless-stopped
     networks:
       - default
