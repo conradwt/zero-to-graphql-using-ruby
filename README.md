@@ -6,15 +6,15 @@ The purpose of this example is to provide details as to how one would go about u
 
 ## Software requirements
 
-- Docker Desktop 4.30.0 or newer
+- Docker Desktop 4.83.0 or newer
 
-- PostgreSQL 18.3 or newer
+- PostgreSQL 18.4 or newer
 
 - Rails 8.1.2 or newer
 
-- Ruby 4.0.2 or newer
+- Ruby 4.0.6 or newer
 
-Note: This tutorial was updated on macOS 26.3.1 (Tahoe). Docker Desktop is ony needed if you're following the `Docker Installation`.
+Note: This tutorial was updated on macOS 26.5.2 (Tahoe). Docker Desktop is ony needed if you're following the `Docker Installation`.
 
 ## Communication
 
