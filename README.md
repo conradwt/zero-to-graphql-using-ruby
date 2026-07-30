@@ -10,7 +10,7 @@ The purpose of this example is to provide details as to how one would go about u
 
 - PostgreSQL 18.4 or newer
 
-- Rails 8.1.2 or newer
+- Rails 8.1.3.1 or newer
 
 - Ruby 4.0.6 or newer
 
