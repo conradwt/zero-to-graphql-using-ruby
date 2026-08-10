@@ -80,8 +80,8 @@ GEM
     bcrypt_pbkdf (1.1.2)
     bigdecimal (4.1.2)
     bindex (0.8.1)
-    bootsnap (1.24.6)
-      msgpack (~> 1.2)
+    bootsnap (1.25.0)
+      msgpack (~> 1.5)
     brakeman (8.0.5)
       racc
     builder (3.3.0)
@@ -116,7 +116,7 @@ GEM
       fiber-storage
     i18n (1.15.2)
       concurrent-ruby (~> 1.0)
-    io-console (0.8.2)
+    io-console (0.9.1)
     irb (1.18.0)
       pp (>= 0.6.0)
       prism (>= 1.3.0)
