@@ -12,9 +12,9 @@ The purpose of this example is to provide details as to how one would go about u
 
 - Rails 8.1.3.1 or newer
 
-- Ruby 4.0.6 or newer
+- Ruby 4.0.9 or newer
 
-Note: This tutorial was updated on macOS 26.5.2 (Tahoe). Docker Desktop is ony needed if you're following the `Docker Installation`.
+Note: This tutorial was updated on macOS 26.7.0 (Tahoe). Docker Desktop is ony needed if you're following the `Docker Installation`.
 
 ## Communication
 
